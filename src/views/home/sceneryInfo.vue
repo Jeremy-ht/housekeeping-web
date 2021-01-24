@@ -1,164 +1,234 @@
 <template>
   <div class="container">
     <div class="container-item">
-      <div class="title">
-        {{detailInfo.title}}
-      </div>
-      <!--      <div class="hr"/>-->
-      <hr class="hr1"/>
 
-      <div class="wrap-div">
-        <div class="detail">
-          看点
+      <!-- ========================= -->
+      <!-- 图片等展示 -->
+      <!-- ========================= -->
+      <div class="container-item-one">
+        <div class="one-left">
+          <img src="http://www.51ejz.com/upimages/f2d3687b-4e50-462d-809c-c3f72f4b4ab4.jpg">
+          <span><b style="cursor: pointer;">赵家群|</b> 安徽</span>
+          <i>48岁&nbsp;12年工作经验</i>
         </div>
-        <div v-html="detailInfo.feature"/>
-      </div>
 
-      <div class="hr"/>
-      <!--      <hr class="hr"/>-->
-
-      <div class="wrap-div">
-        <div class="detail">
-          概况
-        </div>
-        <div v-html="detailInfo.introduction"/>
-      </div>
-      <div class="hr"/>
-      <!--      <hr class="hr"/>-->
-
-      <div class="wrap-div1 ">
-        <div class="detail-phone">
-          <div class="detail">
-            电话
+        <div class="one-right">
+          <div class="one-right-1">黎阿姨（不住家保姆）&nbsp;&nbsp;女&nbsp;&nbsp;44岁&nbsp;&nbsp;
+            来自辽宁&nbsp;&nbsp;当前状态：待岗
           </div>
-          <div style="margin-top: 10px">
-            {{detailInfo.phone}}
+          <div class="one-right-2">勤快</div>
+          <div class="one-right-3">
+            <div class="detail-one">
+              <div class="detail1">籍贯</div>
+              <div class="detail2"></div>
+
+              <div class="detail1">性别</div>
+              <div class="detail2"></div>
+
+              <div class="detail1">身高</div>
+              <div class="detail2"></div>
+
+              <div class="detail1">体重</div>
+              <div class="detail2"></div>
+
+              <div class="detail1">婚姻状况</div>
+              <div class="detail2"></div>
+
+            </div>
+            <div class="detail-two">
+              <div class="detail1">工作经验</div>
+              <div class="detail2"></div>
+
+              <div class="detail1">做过几家</div>
+              <div class="detail2"></div>
+
+              <div class="detail1">期望薪资</div>
+              <div class="detail2"></div>
+
+              <div class="detail1">食宿</div>
+              <div class="detail2"></div>
+
+              <div class="detail1">学历</div>
+              <div class="detail2"></div>
+
+            </div>
           </div>
-        </div>
+          <div class="one-right-4">
 
-        <div class="detail-open">
-          <div class="detail">
-            开放时间
           </div>
-          <div style="margin-top: 10px">
-            {{detailInfo.opentime}}
+          <div class="one-right-5">
+            <div class="yy">我要预约</div>
           </div>
-        </div>
 
-      </div>
-      <div class="hr"/>
-      <!--      <hr class="hr"/>-->
 
-      <div class="wrap-div">
-        <div class="detail">
-          交通
-        </div>
-        <div>
-          {{detailInfo.gopath}}
         </div>
       </div>
-      <div class="hr"/>
-      <!--      <hr class="hr"/>-->
+      <div class="container-item-hr"/>
 
-      <div class="wrap-div">
-        <div class="detail">
-          门票
-        </div>
-        <div>
-          {{detailInfo.pay}}
+
+      <!-- ========================= -->
+      <!-- 介绍 -->
+      <!-- ========================= -->
+      <div class="container-item-two">
+        <el-tabs v-model="activeName" type="card" @tab-click="handleClick" class="el-tabs">
+          <el-tab-pane label="基本信息" name="first">
+            <div class="base-info-name base">赵家群</div>
+
+            <div class="base-info">
+              <div class="base-info-item base">
+
+                <div class="base-item">
+                  <div class="base-item-left">姓名</div>
+                  <div class="base-item-right">赵家群</div>
+                </div>
+
+                <div class="base-item">
+                  <div class="base-item-left">性别</div>
+                  <div class="base-item-right">女</div>
+                </div>
+
+                <div class="base-item">
+                  <div class="base-item-left">年龄</div>
+                  <div class="base-item-right">44岁</div>
+                </div>
+
+                <div class="base-item">
+                  <div class="base-item-left">籍贯</div>
+                  <div class="base-item-right">辽宁</div>
+                </div>
+
+
+              </div>
+            </div>
+          </el-tab-pane>
+
+          <el-tab-pane label="详细介绍" name="second">
+            <div class="base-info">
+            </div>
+          </el-tab-pane>
+
+          <el-tab-pane label="工作技能" name="third">
+            <div class="base-info">
+            </div>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+      <div class="container-item-hr"/>
+
+
+      <!-- ========================= -->
+      <!-- 评论 -->
+      <!-- ========================= -->
+      <div class="container-item-three">
+        <div class="comment">
+          <div class="comment-title">
+            <div style="font-size: 24px;color: #FF7124">
+              评论列表 <span style="font-size: 18px;color: #575757">{{'(' + countList + ' 条)'}} </span>
+            </div>
+          </div>
+
+          <div class="comment-content">
+            <div class="comment-content-item">
+              <div class="comment-content-item-left">
+                <img class="login-img"
+                     src="https://himg.bdimg.com/sys/portrait/item/wise.1.fe14b7b5.3HTn7WQ5wStcXC4kozU2aQ.jpg"/>
+              </div>
+
+              <div class="comment-content-item-right">
+                <div class="comment-content-name">
+                  庾瑞灵0
+                </div>
+
+                <div class="comment-content-content">
+                  建议国家派两个航母编队，封锁北明奇海峡和英吉利海峡，
+                  强制隔离英国，设立禁飞区，英国飞机敢起飞就击落！
+                </div>
+
+                <div class="comment-content-time">
+                  44分钟前
+                </div>
+              </div>
+            </div>
+
+            <div class="comment-content-item">
+              <div class="comment-content-item-left">
+                <img class="login-img"
+                     src="https://himg.bdimg.com/sys/portrait/item/wise.1.fe14b7b5.3HTn7WQ5wStcXC4kozU2aQ.jpg"/>
+              </div>
+
+              <div class="comment-content-item-right">
+                <div class="comment-content-name">
+                  庾瑞灵0
+                </div>
+
+                <div class="comment-content-content">
+                  建议国家派两个航母编队，封锁北明奇海峡和英吉利海峡，
+                  强制隔离英国，设立禁飞区，英国飞机敢起飞就击落！
+                </div>
+
+                <div class="comment-content-time">
+                  44分钟前
+                </div>
+              </div>
+            </div>
+
+            <div class="comment-content-item">
+              <div class="comment-content-item-left">
+                <img class="login-img"
+                     src="https://himg.bdimg.com/sys/portrait/item/wise.1.fe14b7b5.3HTn7WQ5wStcXC4kozU2aQ.jpg"/>
+              </div>
+
+              <div class="comment-content-item-right">
+                <div class="comment-content-name">
+                  庾瑞灵0
+                </div>
+
+                <div class="comment-content-content">
+                  建议国家派两个航母编队，封锁北明奇海峡和英吉利海峡，
+                  强制隔离英国，设立禁飞区，英国飞机敢起飞就击落！
+                </div>
+
+                <div class="comment-content-time">
+                  44分钟前
+                </div>
+              </div>
+            </div>
+            <div class="comment-content-item">
+              <div class="comment-content-item-left">
+                <img class="login-img"
+                     src="https://himg.bdimg.com/sys/portrait/item/wise.1.fe14b7b5.3HTn7WQ5wStcXC4kozU2aQ.jpg"/>
+              </div>
+
+              <div class="comment-content-item-right">
+                <div class="comment-content-name">
+                  庾瑞灵0
+                </div>
+
+                <div class="comment-content-content">
+                  建议国家派两个航母编队，封锁北明奇海峡和英吉利海峡，
+                  强制隔离英国，设立禁飞区，英国飞机敢起飞就击落！
+                </div>
+
+                <div class="comment-content-time">
+                  44分钟前
+                </div>
+              </div>
+            </div>
+            <div class="comment-content-bottom">
+              <span>我是有底线的</span>
+            </div>
+          </div>
+
+
         </div>
       </div>
 
-      <div class="time-info">
-        *信息更新时间: {{' '+detailInfo.releasetime}}
-      </div>
-
-      <hr class="hr1" style="margin-top: 50px;margin-bottom: 0"/>
     </div>
-
-    <!-- 评论 -->
-    <div class="comment1">
-
-      <div class="comment-title">
-        <div style="font-size: 28px;color: #888a88">
-          评论 <span style="font-size: 16px;color: #232323">{{'(' + countList + '条 )'}} </span>
-        </div>
-        <div>
-          <el-button type="warning" @click="addComm">我要评论</el-button>
-        </div>
-      </div>
-
-
-      <!--      <div class="comment-content" v-for="item in commentList" :for="item.id">-->
-
-      <!--        <div class="comment-content-img">-->
-      <!--          <div>-->
-      <!--            <img class="login-img" :src="item.image"/>-->
-      <!--            <span class="comment-content-img-span">{{item.uname}}</span>-->
-      <!--          </div>-->
-
-      <!--        </div>-->
-
-      <!--      </div>-->
-
-      <div class="comment">
-        <!--        <div class="comment-number">-->
-        <!--          <span style="font-size: 28px;margin-left: 8px;color: #36ff25">{{commentList.length}}</span>-->
-        <!--          <span style="color: #657180;font-size: 20px;margin-left: 8px">条评论</span>-->
-        <!--        </div>-->
-
-        <div class="comment-content" v-for="item in commentList" :key="item.id">
-					<span style="width: 7%;">
-						<img :src="item.image"
-                 width="28px" height="28px" style="border-radius:50%">
-					</span>
-
-          <span class="comment-content-name">
-						<span style="font-size: 16px;color: #ff6817;">{{item.uname}}</span>
-						<span style="margin-left: 15px;color: #657180;font-size: 16px;">{{item.creatime}}</span>
-					</span>
-
-          <span class="comment-content-span">
-						{{item.commentary}}
-					</span>
-
-        </div>
-
-      </div>
-    </div>
-
-
-    <div class="bottom">
-    </div>
-
-
-    <!--评论-->
-    <el-dialog title="我要评论" :visible.sync="dilog" width="50%" @close="closeAddAdminForm()">
-      <span>
-        <!--表单-->
-        <el-form ref="addAdminRef">
-          <el-form-item>
-          <el-input type="textarea"
-                    maxlength="300" show-word-limit
-                    :rows="4"
-                    placeholder="请输入内容评论内容"
-                    v-model="addComment"/>
-          </el-form-item>
-        </el-form>
-      </span>
-
-      <!--底部区域-->
-      <span slot="footer" class="dialog-footer">
-          <el-button type="warning" @click="addCommentBtn">确 定</el-button>
-          <el-button type="info" @click="dilog = false">取 消</el-button>
-      </span>
-    </el-dialog>
-
   </div>
 </template>
 
 <script>
-  import { getSceneryInfo, addComment, getCommentList }
+  import {getSceneryInfo, addComment, getCommentList}
     from '../../api/common'
   import '../../assets/iconfont/iconfont'
 
@@ -166,6 +236,14 @@
     name: 'sceneryInfo',
     data() {
       return {
+
+
+        activeName: 'first',
+
+        commentList: [],
+        countList: 0,
+
+
         dilog: false,
         user: {},
         detailId: 0,
@@ -187,8 +265,6 @@
 
         addComment: '',
 
-        commentList: [],
-        countList: 0
 
       }
     },
@@ -197,6 +273,12 @@
 
     },
     methods: {
+
+      handleClick(tab, event) {
+        console.log(tab, event);
+      },
+
+
       // 初始化
       async init() {
         this.categoryid = this.$route.params.categoryid
@@ -237,7 +319,7 @@
         // 是否登录
         let user = JSON.parse(window.localStorage.getItem('UserInfo'))
         if (user == undefined || user == null || user == '') {
-          this.$message({ message: '请先登录', type: 'error', duration: 1700 })
+          this.$message({message: '请先登录', type: 'error', duration: 1700})
           this.$router.push('/scenery/userLogin/1')
         } else {
           this.user = user
@@ -247,7 +329,7 @@
 
       addCommentBtn() {
         if (this.addComment == '') {
-          this.$message({ message: '请输入评论内容', type: 'error', duration: 1700 })
+          this.$message({message: '请输入评论内容', type: 'error', duration: 1700})
           return
         }
 
@@ -263,9 +345,9 @@
             this.init()
             this.dilog = false
             this.addComment = ''
-            this.$message({ message: '评论成功', type: 'success', duration: 1700 })
+            this.$message({message: '评论成功', type: 'success', duration: 1700})
           } else {
-            this.$message({ message: '评论失败', type: 'error', duration: 1700 })
+            this.$message({message: '评论失败', type: 'error', duration: 1700})
           }
         })
 
@@ -280,15 +362,198 @@
   .container {
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
     /*box-shadow:inset 0px 2px 10px -15px #000;*/
     /*-webkit-box-shadow: #d4d2d2 0px 0px 10px;*/
     /*-moz-box-shadow: #d4d2d2 0px 0px 10px;*/
   }
 
   .container-item {
-    margin: 0 14%;
-    padding-bottom: 20px;
-    padding-top: 16px;
+    width: 1100px;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+  }
+
+  .container-item-hr {
+    width: 100%;
+    height: 20px;
+    background-color: #f5f5f5;
+  }
+
+  .container-item-one {
+    width: 100%;
+    height: 350px;
+    margin-top: 20px;
+    border: 1px solid #e9e9e9;
+    display: flex;
+  }
+
+  .one-left {
+    width: 300px;
+    height: 310px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    background-color: #f5f5f5;
+  }
+
+  .one-left img {
+    width: 165px;
+    height: 200px;
+    cursor: pointer;
+    margin: auto;
+  }
+
+  .one-right {
+    width: 800px;
+    height: 310px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 10px;
+  }
+
+  .one-right-1 {
+    border-left: solid 3px #FF7124;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 8px;
+  }
+
+  .one-right-2 {
+    height: 50px;
+    margin-top: 20px;
+    border-top: 1px dashed #e9e9e9;
+    line-height: 50px;
+  }
+
+  .one-right-3 {
+
+  }
+
+  .one-right-4 {
+    width: 800px;
+    height: 40px;
+    margin-top: 20px;
+    border: 1px dashed #e9e9e9;
+    overflow: hidden;
+  }
+
+  .one-right-5 {
+    width: 800px;
+    height: 40px;
+    margin-top: 20px;
+  }
+
+  .yy {
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    background-color: #FF7124;
+    color: white;
+    float: right;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .detail-one {
+    width: 800px;
+    height: 42px;
+    line-height: 42px;
+    border: 1px solid #e9e9e9;
+  }
+
+  .detail-two {
+    width: 800px;
+    height: 41px;
+    line-height: 41px;
+    border-left: 1px solid #e9e9e9;
+    border-right: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
+    /*padding-top: 1px;*/
+  }
+
+  .detail1 {
+    float: left;
+    width: 75px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #FF7124;
+    background: #f5f5f5;
+  }
+
+  .detail2 {
+    float: left;
+    width: 84px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #888888;
+  }
+
+  /* 基本信息 */
+  .base {
+    margin-left: 12px;
+  }
+
+  .base-info-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #FF7124;
+    /*margin-top: 10px;*/
+  }
+
+  .base-info {
+    width: 100%;
+    height: 100%;
+    border-top: solid 1px #FF7124;
+    margin-top: 10px;
+  }
+
+  .base-info-item {
+    width: 100%;
+    height: 100%;
+  }
+
+  .base-item {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #e9e9e9;
+    display: flex;
+
+  }
+
+  .base-item-left {
+    width: 150px;
+    height: 100%;
+    margin: auto;
+    text-align: center;
+    color: #FF7124;
+    line-height: 50px;
+  }
+
+  .base-item-right {
+    width: calc(100% - 150px);
+    height: 100%;
+    padding-left: 20px;
+    line-height: 50px;
+    color: #a7a2a2;
+  }
+
+
+  /* 评论 todo*/
+  .container-item-three {
+    width: 100%;
+    height: 100%;
+    /*margin-top: 20px;*/
+    /*border: 1px solid #e9e9e9;*/
+    /*display: flex;*/
   }
 
   .comment1 {
@@ -321,12 +586,7 @@
 
 
   .comment {
-    /*margin-left: 5%;*/
-    /*margin-right: 5%;*/
-    /*!*border: 1px red solid;*!*/
-    width: 100%;
-    height: 100%;
-    /*margin-bottom: 30px;*/
+    padding: 10px;
   }
 
   .comment-number {
@@ -339,114 +599,91 @@
 
   .comment-content {
     width: 100%;
+    height: 100%;
+    border-top: solid 1px #FF7124;
+    margin-top: 20px;
+  }
+
+  .comment-content-item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding-bottom: 40px;
+    padding-top: 20px;
+    /*border-bottom: solid 1px #c5bfbf;*/
+  }
+
+  .comment-content-item-left {
+    width: 100px;
+    height: 100%;
+    /*border: solid 1px #FF7124;*/
+    display: flex;
+  }
+
+  .comment-content-item-right {
+    width: calc(100% - 100px);
+    height: 100%;
+    /*border: solid 1px #FF7124;*/
     display: flex;
     flex-wrap: wrap;
-    border-bottom: 1px #dbdbdb solid;
-    margin-top: 35px;
-    /*margin-bottom: 10px;*/
-    padding-bottom: 10px;
+    flex-direction: column;
+  }
+
+  .comment-content-bottom {
+    font: 14px PingFangSC-Regular;
+    text-align: center;
+    line-height: 42px;
+    color: #626675;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .comment-content-name {
-    /*width: 90%;*/
-    margin-bottom: 10px;
-
+    /*margin-bottom: 10px;*/
+    /*font-family: PingFangSC-Semibold;*/
+    font-size: 16px;
+    color: #222;
+    font-weight: 600;
   }
 
-  .comment-content-span {
-    width: 90%;
-    margin-left: 7%;
-    margin-bottom: 15px;
-    font-size: 15px;
+  .comment-content-content {
+    padding-top: 10px;
+    font: 14px/22px PingFangSC-Regular;
+    text-align: justify;
     color: #222;
   }
 
-  .write-comment {
-    width: 100%;
-    display: flex;
-    margin-top: 10px;
-    border-bottom: 1px #dbdbdb solid;
-  }
-
-  .write-comment-content {
-    width: 93%;
-    height: 100px;
-    /*border: 1px yellow solid;*/
-    margin-bottom: 10px;
+  .comment-content-time {
+    font-family: PingFangSC-Regular;
+    font-size: 13px;
+    color: #9195a3;
+    padding-top: 20px;
   }
 
   .login-img {
-    width: 32px;
-    height: 32px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    /*margin: auto;*/
+    margin: auto;
+    text-align: center;
   }
 
-  .title {
-    font-weight: normal;
-    font-size: 30px;
-    color: #333;
-    /*padding-bottom: 10px;*/
-    margin-top: 10px;
-
+  .container-item-two {
+    margin: 10px;
+    padding-bottom: 60px;
   }
 
-  .hr1 {
-    margin-top: 25px;
-    margin-bottom: 25px;
-  }
-
-  .hr {
-    margin-top: 25px;
-    margin-bottom: 50px;
-  }
-
-  .detail {
-    font-size: 18px;
-    font-weight: 500;
+  /deep/ .el-tabs__item.is-active {
     color: #ff9d00;
-    border-left: solid 2px #ff9d00;
-    width: 100px;
-    height: 26px;
-    padding-left: 4px;
-    line-height: 26px;
-    margin-bottom: 10px;
   }
 
-  .wrap-div1 {
-    display: flex;
+  /deep/ .el-tabs__item.is-active {
+    color: #ff9d00;
   }
 
-
-  .detail-phone {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  /deep/ .el-tabs__item:hover {
+    color: #ff9d00;
+    cursor: pointer;
   }
 
-  .detail-open {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .time-info {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #969896;
-  }
-
-  .look-div {
-    /*margin-top: 20px;*/
-
-  }
-
-  .bottom {
-    width: 100%;
-    height: 80px;
-    background-color: #131313;
-    margin-top: 50px;
-  }
 </style>

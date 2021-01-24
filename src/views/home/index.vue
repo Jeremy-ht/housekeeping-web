@@ -20,7 +20,7 @@
             @select="handleSelect"
             background-color="#FFFFFF"
             text-color="#000"
-            active-text-color="#e95513">
+            active-text-color="#ff7225">
             <el-menu-item index="0">首页</el-menu-item>
             <el-menu-item index="1">家政</el-menu-item>
             <el-menu-item index="2">月嫂</el-menu-item>
@@ -44,9 +44,10 @@
           <!--                    v-model="search"-->
           <!--                    size="small" v-on:keyup.enter="searchGo">-->
           <!--          </el-input>-->
-          <el-input placeholder="找我搜索想要的内容吧..." v-model="search" class="input-with-select">
-            <!--            <el-button slot="append" style="background-color: #e95513" v-on:keyup.enter="searchGo">搜索</el-button>-->
-            <el-button slot="append" v-on:keyup.enter="searchGo" style="background-color: #e9e8e7">搜索</el-button>
+          <el-input placeholder="找我搜索想要的内容吧..."  suffix-icon="el-icon-search" v-model="search" class="input-with-select">
+            <!--            <el-button slot="append" style="background-color: #ff7225" v-on:keyup.enter="searchGo">搜索</el-button>-->
+<!--            <el-button slot="append" v-on:keyup.enter="searchGo" style="background-color: #888787">搜索</el-button>-->
+<!--            <el-button slot="append" v-on:keyup.enter="searchGo" plain>搜索</el-button>-->
           </el-input>
         </div>
         <!--        <div class="home-text">-->
@@ -58,8 +59,6 @@
 
           <div v-if="!showLogin" class="login-text">
             <span class="login" @click="goLogin(1)">登录</span>
-            |
-            <span class="register" @click="goLogin(2)">注册</span>
           </div>
 
           <div v-else-if="showLogin" style="display: flex">
@@ -99,91 +98,150 @@
 
             <h1 style="color: #414446;margin: auto;font-size: 38px;">家政服务</h1>
             <p style="color: #555;margin: 12px auto;font-size: 18px;">全方位的服务 让您生活无忧</p>
-            <i class="iiii"></i>
+            <i class="iiii"/>
 
+            <div class="cate-content-item">
+              <div class="item"
+                   style="background: url(../../assets/housekeeping/home-working-bg1.png) no-repeat 25% 70%;">
+                <i/>
+                <span>日常保洁</span>
+                <p>钟点工/小时工/清洁护理</p>
+                <img class="img1" src="../../assets/housekeeping/index-icon-1.png">
+                <!--                <img class="img2" src="../../assets/housekeeping/index-icon-2.png">-->
+              </div>
+
+              <div class="item"
+                   style="background: url(../../assets/housekeeping/home-working-bg2.png) no-repeat 25% 70%;">
+                <i/>
+                <span>开荒保洁</span>
+                <p>装修硬装结束第一次保洁 新居开荒</p>
+                <img class="img1" src="../../assets/housekeeping/index-icon-1.png">
+                <!--                <img class="img2" src="../../assets/housekeeping/index-icon-2.png">-->
+              </div>
+
+              <div class="item"
+                   style="background: url(../../assets/housekeeping/home-working-bg3.png) no-repeat 25% 70%;">
+                <i/>
+                <span>家电清洗</span>
+                <p>给家电一个全面清洗</p>
+                <img class="img1" src="../../assets/housekeeping/index-icon-1.png">
+                <!--                <img class="img2" src="../../assets/housekeeping/index-icon-2.png">-->
+              </div>
+
+              <div class="item"
+                   style="background: url(../../assets/housekeeping/home-working-bg4.png) no-repeat 25% 70%;">
+                <i/>
+                <span>深度保洁</span>
+                <p>装修硬装结束第一次保洁 新居开荒</p>
+                <img class="img1" src="../../assets/housekeeping/index-icon-1.png">
+                <!--                <img class="img2" src="../../assets/housekeeping/index-icon-2.png">-->
+              </div>
+
+              <div class="item"
+                   style="background: url(../../assets/housekeeping/home-working-bg5.png) no-repeat 25% 70%;">
+                <i/>
+                <span>搬家</span>
+                <p>优质的服务，还您一个温馨的家</p>
+                <img class="img1" src="../../assets/housekeeping/index-icon-1.png">
+                <!--                <img class="img2" src="../../assets/housekeeping/index-icon-2.png">-->
+              </div>
+
+              <div class="item"
+                   style="background: url(../../assets/housekeeping/home-working-bg7.png) no-repeat 25% 70%;">
+                <i/>
+                <span>擦玻璃</span>
+                <p>专业清洗，明亮窗外色</p>
+                <img class="img1" src="../../assets/housekeeping/index-icon-1.png">
+                <!--                <img class="img2" src="../../assets/housekeeping/index-icon-2.png">-->
+              </div>
+
+            </div>
+
+          </div>
+
+          <div style="width: 100%;height:10px;background-color: #F0F0F0"></div>
+          <div class="cate-content">
+
+            <h1 style="color: #414446;margin: auto;font-size: 38px;">特色服务</h1>
+            <p style="color: #555;margin: 12px auto;font-size: 18px;">专业 优质 贴心 温馨</p>
+            <i class="iiii"/>
+
+            <div class="feature">
+              <div class="feature-item">
+                <img src="../../assets/housekeeping/spe-serv1.png"/>
+                <span>月嫂</span>
+              </div>
+
+              <div class="feature-item">
+                <img src="../../assets/housekeeping/spe-serv2.png"/>
+                <span>保姆</span>
+              </div>
+
+              <div class="feature-item">
+                <img src="../../assets/housekeeping/spe-serv3.png"/>
+                <span>陪护</span>
+              </div>
+
+              <div class="feature-item">
+                <img src="../../assets/housekeeping/spe-serv4.png"/>
+                <span>钟点工</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="width: 100%;height:10px;background-color: #F0F0F0"></div>
+          <div class="cate-content" style="border-bottom: solid 2px rgb(233, 85, 19);">
+            <h1 style="color: #414446;margin: auto;font-size: 38px;">员工风采</h1>
+            <p style="color: #555;margin: 12px auto;font-size: 18px;">明星员工 专业服务</p>
+            <i class="iiii"/>
+
+            <div class="user-show">
+              <div class="user-item">
+                <div
+                  style="display:flex;width: 215px; height: 270px;border-left: solid 1px #ebebeb;border-right: solid 1px #ebebeb;">
+                  <img src="http://www.51ejz.com/upimages/f2d3687b-4e50-462d-809c-c3f72f4b4ab4.jpg">
+                </div>
+                <span><b style="cursor: pointer;">赵家群|</b> 安徽</span>
+                <i>48岁&nbsp;12年工作经验</i>
+              </div>
+
+              <div class="user-item">
+                <div
+                  style="display:flex;width: 215px; height: 270px;border-left: solid 1px #ebebeb;border-right: solid 1px #ebebeb;">
+                  <img src="http://www.51ejz.com/upimages/f2d3687b-4e50-462d-809c-c3f72f4b4ab4.jpg">
+                </div>
+                <span><b style="cursor: pointer;">赵家群|</b> 安徽</span>
+                <i>48岁&nbsp;12年工作经验</i>
+              </div>
+
+              <div class="user-item">
+                <div
+                  style="display:flex;width: 215px; height: 270px;border-left: solid 1px #ebebeb;border-right: solid 1px #ebebeb;">
+                  <img src="http://www.51ejz.com/upimages/f2d3687b-4e50-462d-809c-c3f72f4b4ab4.jpg">
+                </div>
+                <span><b style="cursor: pointer;">赵家群|</b> 安徽</span>
+                <i>48岁&nbsp;12年工作经验</i>
+              </div>
+
+
+              <div class="user-item">
+                <div
+                  style="display:flex;width: 215px; height: 270px;border-left: solid 1px #ebebeb;border-right: solid 1px #ebebeb;">
+                  <img src="http://www.51ejz.com/upimages/f2d3687b-4e50-462d-809c-c3f72f4b4ab4.jpg">
+                </div>
+                <span><b style="cursor: pointer;">赵家群|</b> 安徽</span>
+                <i>48岁&nbsp;12年工作经验</i>
+              </div>
+
+            </div>
+
+            <div style="margin-bottom: 20px;color:#6e6e6e">
+              <span style="color: rgb(233, 85, 19);text-align: center">*</span> 明星员工Top 8 </div>
           </div>
         </div>
 
-        <!--        <div style="width: 100%;height:30px;background-color: #F0F0F0"></div>-->
-        <!--        <div class="scenery">-->
-        <!--          <div class="cate-text">特色美食</div>-->
-
-        <!--          <div class="cate-content">-->
-
-        <!--            <div class="cate-content-item" v-for="item in foodList">-->
-        <!--              <div class="cate-content-item-image">-->
-        <!--                &lt;!&ndash;图片区域&ndash;&gt;-->
-        <!--                <img class="image-detail"-->
-        <!--                     :src="item.cover"-->
-        <!--                     @click="goDetailInfo(item.categoryid, item.id)"/>-->
-        <!--              </div>-->
-
-        <!--              <div class="cate-content-item-text" @click="goDetailInfo(item.categoryid, item.id)">-->
-        <!--                <span class="cate-content-item-sapn">-->
-        <!--                 <span style="font-size: 20px;color:#ef7a82; "> {{item.title }} &nbsp;&nbsp;&nbsp;</span>-->
-        <!--                  {{' ' + item.feature}}-->
-        <!--                </span>-->
-        <!--              </div>-->
-
-        <!--            </div>-->
-
-        <!--          </div>-->
-        <!--        </div>-->
-
-        <!--        <div style="width: 100%;height:30px;background-color: #F0F0F0"></div>-->
-        <!--        <div class="scenery">-->
-        <!--          <div class="cate-text">购物天堂</div>-->
-
-        <!--          <div class="cate-content">-->
-
-        <!--            <div class="cate-content-item" v-for="item in shoppingList">-->
-        <!--              <div class="cate-content-item-image">-->
-        <!--                &lt;!&ndash;图片区域&ndash;&gt;-->
-        <!--                <img class="image-detail"-->
-        <!--                     :src="item.cover"-->
-        <!--                     @click="goDetailInfo(item.categoryid, item.id)"/>-->
-        <!--              </div>-->
-
-        <!--              <div class="cate-content-item-text" @click="goDetailInfo(item.categoryid, item.id)">-->
-        <!--                <span class="cate-content-item-sapn">-->
-        <!--                 <span style="font-size: 20px;color:#ef7a82; "> {{item.title }} &nbsp;&nbsp;&nbsp;</span>-->
-        <!--                  {{' ' + item.feature}}-->
-        <!--                </span>-->
-        <!--              </div>-->
-
-        <!--            </div>-->
-
-        <!--          </div>-->
-        <!--        </div>-->
-
-        <!--        <div style="width: 100%;height:30px;background-color: #F0F0F0"></div>-->
-        <!--        <div class="scenery">-->
-        <!--          <div class="cate-text">人文历史</div>-->
-
-        <!--          <div class="cate-content">-->
-
-        <!--            <div class="cate-content-item" v-for="item in personList">-->
-        <!--              <div class="cate-content-item-image">-->
-        <!--                &lt;!&ndash;图片区域&ndash;&gt;-->
-        <!--                <img class="image-detail"-->
-        <!--                     :src="item.cover"-->
-        <!--                     @click="goDetailInfo(item.categoryid, item.id)"/>-->
-        <!--              </div>-->
-
-        <!--              <div class="cate-content-item-text" @click="goDetailInfo(item.categoryid, item.id)">-->
-        <!--                <span class="cate-content-item-sapn">-->
-        <!--                 <span style="font-size: 20px;color:#ef7a82; "> {{item.title }} &nbsp;&nbsp;&nbsp;</span>-->
-        <!--                  {{' ' + item.feature}}-->
-        <!--                </span>-->
-        <!--              </div>-->
-
-        <!--            </div>-->
-
-        <!--          </div>-->
-        <!--        </div>-->
-
-        <div style="width: 100%;height:50px;background-color: #F0F0F0"></div>
-
+        <div style="width: 100%; height:30px; background-color: #F0F0F0"></div>
       </div>
     </div>
 
@@ -252,7 +310,7 @@
 
 
     <!--    <div class="bottom" v-show="showIndex == 1">-->
-  </div>
+    <!--  </div>-->
 
   </div>
 </template>
@@ -430,7 +488,7 @@
 
       // 登录
       goLogin(id) {
-        this.$router.push('/scenery/userLogin/' + id)
+        this.$router.push('/scenery/userLogin/')
       },
 
       // 注册
@@ -440,7 +498,7 @@
 
       // 去详情页
       goDetailInfo(categoryid, id) {
-        const { href } = this.$router.resolve({ path: `/scenery/sceneryInfo/${categoryid}/${id}` })
+        const {href} = this.$router.resolve({path: `/scenery/sceneryInfo/${categoryid}/${id}`})
         window.open(href, '_blank')
 
       },
@@ -476,7 +534,7 @@
 
       updUser() {
         if (this.UserInfo.id == 0) {
-          this.$message({ message: '修改失败', type: 'error', duration: 1700 })
+          this.$message({message: '修改失败', type: 'error', duration: 1700})
           return
         }
 
@@ -485,7 +543,7 @@
             window.localStorage.removeItem('UserInfo')
             window.localStorage.setItem('UserInfo', JSON.stringify(res.data.data))
             this.UserInfo = res.data.data
-            this.$message({ message: '修改成功', type: 'success', duration: 1700 })
+            this.$message({message: '修改成功', type: 'success', duration: 1700})
 
           }
         })
@@ -500,7 +558,7 @@
           window.localStorage.setItem('UserInfo', JSON.stringify(this.UserInfo))
           this.UserInfo = JSON.parse(window.localStorage.getItem('UserInfo'))
         } else {
-          this.$message({ message: '头像上传失败，请重新上传', type: 'error', duration: 1700 })
+          this.$message({message: '头像上传失败，请重新上传', type: 'error', duration: 1700})
         }
 
       }
@@ -538,7 +596,7 @@
   .el-menu-item {
     height: 64px;
     line-height: 64px;
-    font-size: 18px;
+    font-size: 15px;
     /*margin-left: 12px;*/
     /*flex: 1;*/
     /*margin: auto;*/
@@ -560,16 +618,16 @@
 
   /deep/ .el-button.is-plain:focus, .el-button.is-plain:hover {
     background: #FFF;
-    border-color: #e95513;
-    color: #e95513;
+    border-color: #ff7225;
+    color: #ff7225;
   }
 
   /deep/ .el-input__inner:hover {
-    border-color: #e95513;
+    border-color: #ff7225;
   }
 
   /deep/ .el-input__inner:focus {
-    border-color: #e95513;
+    border-color: #ff7225;
   }
 
   .home-icon {
@@ -579,12 +637,10 @@
   }
 
   .home-icon img {
-    /*margin: auto;*/
-    margin-top: 10%;
-    /*width: 80%;*/
-    /*height:  calc(100% + 20px);*/
-    width: 94px;
-    height: 49px;
+    margin-top: 16%;
+    margin-right: 10%;
+    width: 78px;
+    height: 40px;
   }
 
   .home-content {
@@ -618,8 +674,9 @@
 
   .login-text {
     margin: auto;
-    color: #ef7a82;
+    color: rgb(233, 85, 19);
     cursor: pointer;
+    font-size: 14px;
   }
 
   .login-img {
@@ -679,6 +736,7 @@
     background-color: #F0F0F0;
     height: 100%;
     width: 100%;
+    border-bottom: solid 60px #ffffff;
   }
 
   .backgroud-color2 {
@@ -729,7 +787,7 @@
     content: "";
     width: 4px;
     height: 35px;
-    background-color: #ef7a82;
+    background-color: rgb(233, 85, 19);
     display: inline-block;
     position: absolute;
     left: 0;
@@ -737,12 +795,146 @@
   }
 
   .cate-content {
-    margin-top: 16px;
+    margin-top: 26px;
     display: flex;
     flex-direction: column;
     /*flex-wrap: wrap;*/
     /*justify-content: space-between;*/
   }
+
+  .cate-content-item {
+    display: flex;
+    margin: 40px auto;
+    width: 940px;
+    height: 100%;
+    /*border: solid 2px #80430a;*/
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .feature {
+    display: flex;
+    margin: 40px auto;
+    width: 940px;
+    height: 240px;
+    border-top: 2px solid #F7F7F7;
+    border-bottom: 2px solid #F7F7F7;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .user-show {
+    display: flex;
+    margin: 40px auto;
+    width: 100%;
+    height: 100%;
+    border-top: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 30px;
+  }
+
+  .user-item {
+    width: 215px;
+    height: 270px;
+    /*border: 1px solid black;*/
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-item img {
+    width: 156px;
+    height: 194px;
+    cursor: pointer;
+   margin: auto;
+    /*margin: auto;*/
+    /*border-left: solid 1px #666666;*/
+    /*border-right: solid 1px #666666;*/
+  }
+
+  .user-item span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #666666;
+    font-size: 18px;
+    padding: 12px 0 7px;
+    margin: auto;
+
+  }
+
+  .user-item i {
+    color: #666666;
+    font-size: 16px;
+    font-style: normal;
+    /*overflow: hidden;*/
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 8px auto;
+  }
+
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    /*height: 300px;*/
+    width: 200px;
+    margin: auto;
+  }
+
+  .feature-item img {
+    height: 123px;
+    width: 127px;
+    margin: 20px auto;
+    cursor: pointer;
+  }
+
+  .feature-item span {
+    /*margin-top: 10px;*/
+    text-align: center;
+    font-size: 20px;
+    color: #555;
+    cursor: pointer;
+  }
+
+  .item {
+    width: 257px;
+    height: 118px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    flex-direction: column;
+
+  }
+
+  .item i {
+    display: block;
+    width: 45px;
+    height: 2px;
+    background-color: #FF7124;
+    margin-bottom: 10px;
+  }
+
+  .item span {
+    color: #FF7124;
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: 900;
+  }
+
+  .item p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  /*.img1:focus{*/
+
+  /*}*/
+  /*.img2 {*/
+  /*  display: none;*/
+  /*}*/
 
   .title {
     display: flex;
@@ -806,6 +998,15 @@
   /*/deep/ .el-dropdown-menu {*/
   /*  background-color: #3d3b4f;*/
   /*}*/
+
+  /deep/ .el-input__inner{
+    height: 32px;
+    border: 1px solid #FF7124;
+  }
+
+  /deep/ .el-input__icon {
+    line-height: 32px;
+  }
 
   .avatar {
     width: 60px;

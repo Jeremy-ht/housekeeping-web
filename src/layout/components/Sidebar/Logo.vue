@@ -13,7 +13,7 @@
 <!--        <svg class="icon iconfont logo-svg" style="margin-left: 2px;" aria-hidden="true">-->
 <!--          <use xlink:href="#icon-tubiaozhizuomoban_fengjing"/>-->
 <!--        </svg>-->
-        <h3 style="font-size: 18px;color: white; ">{{title}}</h3>
+        <h3 style="font-size: 16px;color: white; ">{{title}}</h3>
       </router-link>
     </transition>
 
@@ -34,7 +34,7 @@
     },
     data() {
       return {
-        title: '景区后台管理'
+        title: '家政后台管理系统'
       }
     }
   }

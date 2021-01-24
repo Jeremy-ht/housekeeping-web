@@ -44,7 +44,7 @@ export const constantRoutes = [
 
   // 登录
   {
-    path: '/scenery/userLogin/:id',
+    path: '/scenery/userLogin',
     hidden: true,
     name: '登录',
     component: () => import('@/views/home/userLogin'),
@@ -64,7 +64,7 @@ export const constantRoutes = [
 
   // 详情
   {
-    path: '/scenery/sceneryInfo/:categoryid/:id',
+    path: '/scenery/sceneryInfo',
     hidden: true,
     name: '景区详情',
     component: () => import('@/views/home/sceneryInfo'),
@@ -115,65 +115,65 @@ export const constantRoutes = [
     ]
   },
   /**
-   * 景区管理
+   * 家政管理
    */
   {
-    path: '/scenery',
+    path: '/housekeeping',
     component: Layout,
-    redirect: '/scenery/detail',
-    name: '景区管理',
-    meta: { title: '景区管理', icon: 'el-icon-s-cooperation' },
+    redirect: '/housekeeping/detail',
+    name: '家政管理',
+    meta: { title: '家政管理', icon: 'el-icon-s-cooperation' },
     children: [
-      {
-        path: 'detail',
-        name: '添加指南',
-        component: () => import('@/views/scenery/detail'),
-        meta: { title: '添加指南', icon: 'table' }
-      },
+      // {
+      //   path: 'detail',
+      //   name: '家政人员',
+      //   component: () => import('@/views/scenery/detail'),
+      //   meta: { title: '添加指南', icon: 'table' }
+      // },
       {
         path: 'list',
-        name: '景点列表',
+        name: '家政人员',
         component: () => import('@/views/scenery/list'),
-        meta: { title: '景点列表', icon: 'table' }
+        meta: { title: '家政人员', icon: 'table' }
       },
       {
         path: 'category',
-        name: '分类管理',
+        name: '家政分类',
         component: () => import('@/views/scenery/category'),
-        meta: { title: '分类管理', icon: 'table' }
+        meta: { title: '家政分类', icon: 'table' }
       }
     ]
   },
   /**
-   * 首页管理
+   * 预定管理
    */
-  // {
-  //   path: '/index',
-  //   component: Layout,
-  //   redirect: '/index/rotation',
-  //   name: '首页管理',
-  //   meta: { title: '首页管理', icon: 'el-icon-s-claim' },
-  //   children: [
-  //     {
-  //       path: 'rotation',
-  //       name: '首页轮播',
-  //       component: () => import('@/views/index/rotation'),
-  //       meta: { title: '首页轮播', icon: 'table' }
-  //     },
-  //     {
-  //       path: 'heat',
-  //       name: '热门景点',
-  //       component: () => import('@/views/index/heat'),
-  //       meta: { title: '热门景点', icon: 'table' }
-  //     },
-  //     {
-  //       path: 'city',
-  //       name: '城市攻略',
-  //       component: () => import('@/views/index/city'),
-  //       meta: { title: '城市攻略', icon: 'table' }
-  //     }
-  //   ]
-  // },
+  {
+    path: '/index',
+    component: Layout,
+    redirect: '/index/reservation',
+    name: '预定管理',
+    meta: { title: '预定管理', icon: 'el-icon-s-claim' },
+    children: [
+      {
+        path: 'reservation',
+        name: '预定列表',
+        component: () => import('@/views/index/reservation'),
+        meta: { title: '预定列表', icon: 'table' }
+      },
+      // {
+      //   path: 'heat',
+      //   name: '热门景点',
+      //   component: () => import('@/views/index/heat'),
+      //   meta: { title: '热门景点', icon: 'table' }
+      // },
+      // {
+      //   path: 'city',
+      //   name: '城市攻略',
+      //   component: () => import('@/views/index/city'),
+      //   meta: { title: '城市攻略', icon: 'table' }
+      // }
+    ]
+  },
   /**
    *  评论
    */

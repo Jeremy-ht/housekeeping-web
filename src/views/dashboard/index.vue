@@ -68,7 +68,7 @@
 
 <script>
   import '../../assets/iconfont/iconfont'
-  import { getHomeCount } from '../../api/common'
+  import {getHomeCount} from '../../api/common'
 
   export default {
     name: 'Dashboard',
@@ -90,7 +90,7 @@
           if (res.success) {
             this.home = res.data.data
           } else {
-            this.$message({ message: '获取数据失败', type: 'error', duration: 1700 })
+            this.$message({message: '获取数据失败', type: 'error', duration: 1700})
           }
 
         })
@@ -100,16 +100,16 @@
       goPath(id) {
         switch (id) {
           case 1:
-            this.$router.push({ path: '/sys/user' })
+            this.$router.push({path: '/sys/user'})
             break
           case 2:
-            this.$router.push({ path: '/sys/user' })
+            this.$router.push({path: '/sys/user'})
             break
           case 3:
-            this.$router.push({ path: '/scenery/list' })
+            this.$router.push({path: '/scenery/list'})
             break
           case 4:
-            this.$router.push({ path: '/comment/commentList' })
+            this.$router.push({path: '/comment/commentList'})
             break
 
         }
@@ -175,4 +175,6 @@
     font-size: 68px;
     margin: auto;
   }
+
+
 </style>

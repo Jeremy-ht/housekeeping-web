@@ -11,7 +11,7 @@
 
 <script>
   export default {
-    name: 'rotation',
+    name: 'reservation',
     data() {
       return {
         imageList: [

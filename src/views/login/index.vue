@@ -3,7 +3,7 @@
     <div class="login-item">
 
       <div class="title-sapn">
-        <h2>景区后台管理</h2>
+        <h2>家政后台管理系统</h2>
       </div>
 
       <div class="login-form">
@@ -72,13 +72,13 @@
           return
         }
 
-        if (this.loginForm.password.trim() == '') {
+        if (this.loginForm.password.trim() === '') {
           this.$message({ message: '密码不能为空', type: 'error', duration: 1700 })
           return
         }
         adminLogin(this.loginForm).then(res => {
           if (res.success) {
-            this.$message({ message: `欢迎 ${res.data.data.username} 景区后台管理系统`, type: 'success', duration: 1700 })
+            // this.$message({ message: `欢迎 ${res.data.data.username} 家政后台管理系统`, type: 'success', duration: 1700 })
             window.localStorage.setItem('AdminInfo', JSON.stringify(res.data.data))
             this.$router.push({ path: '/' })
           } else {
