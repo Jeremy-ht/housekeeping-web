@@ -151,7 +151,7 @@ export function getUserLogList(params) {
  */
 export function addScenery(params) {
   return request({
-    url: baseURL + `/detail/addScenery`,
+    url: baseURL + `/info/addInfo`,
     method: 'post',
     data: params
   })
@@ -164,6 +164,22 @@ export function getSceneryList(params, categoryId, draft, creator) {
     params
   })
 
+}
+
+export function getInfoList(params, id) {
+  return request({
+    url: baseURL + `/info/getInfoList/${id}`,
+    method: 'get',
+    params
+  })
+
+}
+
+export function delInfo(id) {
+  return request({
+    url: baseURL + `/info/delInfo/${id}`,
+    method: 'get'
+  })
 }
 
 export function getSceneryIndex() {

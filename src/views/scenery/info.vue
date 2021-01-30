@@ -116,7 +116,6 @@
 
   </div>
 </template>
-
 <script>
   import {getCategoryList, uploadFile, addScenery} from '../../api/common'
   import '../../assets/iconfont/iconfont'
@@ -141,7 +140,7 @@
   }
 
   export default {
-    name: 'detail',
+    name: "info",
     data() {
 
       // 验证手机号的规则
@@ -242,16 +241,9 @@
     },
     methods: {
       async init() {
-        // 获取创建者
-        // let admin = JSON.parse(window.localStorage.getItem('AdminInfo'))
-        // if (admin == undefined || admin == null || admin == '') {
-        //   this.$router.push('/login')
-        //   this.$message({message: '请先登录再操作', type: 'error', duration: 1700})
-        //   return
-        // } else {
-        //   this.adminInfo = admin
-        //   addDetailInfo.creator = admin.id
-        // }
+
+
+
 
         // 获取分类
         let params = {

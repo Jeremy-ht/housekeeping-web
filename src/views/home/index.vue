@@ -44,10 +44,10 @@
           <!--                    v-model="search"-->
           <!--                    size="small" v-on:keyup.enter="searchGo">-->
           <!--          </el-input>-->
-          <el-input placeholder="找我搜索想要的内容吧..."  suffix-icon="el-icon-search" v-model="search" class="input-with-select">
+          <el-input placeholder="找我搜索想要的内容吧..." suffix-icon="el-icon-search" v-model="search" class="input-with-select">
             <!--            <el-button slot="append" style="background-color: #ff7225" v-on:keyup.enter="searchGo">搜索</el-button>-->
-<!--            <el-button slot="append" v-on:keyup.enter="searchGo" style="background-color: #888787">搜索</el-button>-->
-<!--            <el-button slot="append" v-on:keyup.enter="searchGo" plain>搜索</el-button>-->
+            <!--            <el-button slot="append" v-on:keyup.enter="searchGo" style="background-color: #888787">搜索</el-button>-->
+            <!--            <el-button slot="append" v-on:keyup.enter="searchGo" plain>搜索</el-button>-->
           </el-input>
         </div>
         <!--        <div class="home-text">-->
@@ -237,7 +237,8 @@
             </div>
 
             <div style="margin-bottom: 20px;color:#6e6e6e">
-              <span style="color: rgb(233, 85, 19);text-align: center">*</span> 明星员工Top 8 </div>
+              <span style="color: rgb(233, 85, 19);text-align: center">*</span> 明星员工Top 8
+            </div>
           </div>
         </div>
 
@@ -849,7 +850,7 @@
     width: 156px;
     height: 194px;
     cursor: pointer;
-   margin: auto;
+    margin: auto;
     /*margin: auto;*/
     /*border-left: solid 1px #666666;*/
     /*border-right: solid 1px #666666;*/
@@ -999,7 +1000,7 @@
   /*  background-color: #3d3b4f;*/
   /*}*/
 
-  /deep/ .el-input__inner{
+  /deep/ .el-input__inner {
     height: 32px;
     border: 1px solid #FF7124;
   }

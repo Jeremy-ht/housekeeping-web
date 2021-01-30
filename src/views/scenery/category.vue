@@ -3,13 +3,13 @@
     <el-card class="box-card" shadow="hover">
 
       <el-row :gutter="20">
-        <el-col :span="20">
-          <el-alert :title="alertMsg" :closable="false" type="warning" show-icon>
-          </el-alert>
-        </el-col>
-        <el-col :span="4">
+<!--        <el-col :span="20">-->
+<!--          <el-alert :title="alertMsg" :closable="false" type="warning" show-icon>-->
+<!--          </el-alert>-->
+<!--        </el-col>-->
+        <el-col>
           <!-- 新增按钮 -->
-          <el-button class="admin-add-btn" type="primary" size="small" @click="addCateBtn">新增分类</el-button>
+          <el-button class="admin-add-btn" type="primary" size="small" @click="addCateBtn">添加分类</el-button>
         </el-col>
       </el-row>
 
@@ -29,11 +29,11 @@
         <el-table-column label="操作" align="center">
           <template slot-scope="scope">
             <!--修改-->
-            <el-button type="success" size="mini" @click="updCateBtn(scope.row.categoryid)">
+            <el-button type="success" size="mini" @click="updCateBtn(scope.row.id)">
               修改
             </el-button>
             <!-- 删除 -->
-            <el-button type="danger" size="mini" @click="delCateBtn(scope.row.categoryid)">
+            <el-button type="danger" size="mini" @click="delCateBtn(scope.row.id)">
               删除
             </el-button>
           </template>
