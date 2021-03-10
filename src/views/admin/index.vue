@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-card class="box-card" shadow="hover">
       <!--新增按钮-->
-      <el-button class="admin-add-btn" type="primary" size="small" @click="addAdminBtn">新增员工</el-button>
+      <el-button class="admin-add-btn" type="primary" size="mini" @click="addAdminBtn">新增员工</el-button>
 
 
       <!--表格-->
@@ -78,8 +78,8 @@
 
       <!--底部区域-->
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="addAdmin">确 定</el-button>
-        <el-button @click="addDialogVisible = false">取 消</el-button>
+        <el-button type="primary" size="mini" @click="addAdmin">确 定</el-button>
+        <el-button size="mini" @click="addDialogVisible = false">取 消</el-button>
       </span>
     </el-dialog>
 
@@ -88,11 +88,11 @@
 </template>
 
 <script>
-  import { getAdminList, addAdmin, delAdmin } from '../../api/common'
+  import {getAdminList, addAdmin, delAdmin} from '../../api/common'
   import PageBar from '@/components/PageBar'
 
   export default {
-    name:'index',
+    name: 'index',
     data() {
 
       // 验证手机号的规则
@@ -128,6 +128,7 @@
 
         addAdminInfo: {
           username: '',
+          creator: 0,
           name: '',
           sex: '',
           email: '',
@@ -135,23 +136,26 @@
           icon: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
         },
 
+        adminInfo:{
+
+        },
         // 添加用户表单验证
         addUserRules: {
           username: [
-            { required: true, message: '请输入用户名', trigger: 'blur' },
-            { min: 1, max: 50, message: '长度在 1 到 50 个字符', trigger: 'blur' }
+            {required: true, message: '请输入用户名', trigger: 'blur'},
+            {min: 1, max: 50, message: '长度在 1 到 50 个字符', trigger: 'blur'}
           ],
           name: [
-            { required: true, message: '请输入用户名', trigger: 'blur' },
-            { min: 1, max: 50, message: '长度在 1 到 50 个字符', trigger: 'blur' }
+            {required: true, message: '请输入用户名', trigger: 'blur'},
+            {min: 1, max: 50, message: '长度在 1 到 50 个字符', trigger: 'blur'}
           ],
           phone: [
-            { required: true, message: '请输入手机号', trigger: 'blur' },
-            { validator: checkMobile, trigger: 'blur' }
+            {required: true, message: '请输入手机号', trigger: 'blur'},
+            {validator: checkMobile, trigger: 'blur'}
           ],
           email: [
-            { required: false, message: '请输入邮箱', trigger: 'blur' },
-            { validator: checkEmail, trigger: 'blur' }
+            {required: false, message: '请输入邮箱', trigger: 'blur'},
+            {validator: checkEmail, trigger: 'blur'}
           ]
         }
       }
@@ -176,11 +180,22 @@
             this.pageTotal = res.data.total
             this.adminList = res.data.data
 
-          }else {
-            this.$message({ message: '获取员工列表失败', type: 'error', duration: 1700 })
+          } else {
+            this.$message({message: '获取员工列表失败', type: 'error', duration: 1700})
           }
 
         })
+
+
+        let admin = JSON.parse(window.localStorage.getItem('AdminInfo'))
+        if (admin == undefined || admin == null || admin == '') {
+          this.$router.push('/login')
+          this.$message({message: '请先登录再操作', type: 'error', duration: 1700})
+          return
+        } else {
+          this.adminInfo = admin
+          this.addAdminInfo.creator = admin.id
+        }
 
       },
 
@@ -201,13 +216,13 @@
       },
       addAdmin() {
         let admin = this.addAdminInfo
-        addAdmin('1', admin).then(res => {
+        addAdmin(this.addAdminInfo.creator, admin).then(res => {
           if (res.success) {
             this.addDialogVisible = false
             this.getAdminList()
-            this.$message({ message: '新增员工成功', type: 'success', duration: 1700 })
+            this.$message({message: '新增员工成功', type: 'success', duration: 1700})
           } else {
-            this.$message({ message: '新增员工失败', type: 'error', duration: 1700 })
+            this.$message({message: '新增员工失败', type: 'error', duration: 1700})
           }
 
         })
@@ -216,7 +231,16 @@
 
       // 删除
       delUserBtn(id) {
-        console.log(id)
+        if (id == 1){
+          this.$message({message: '超级管理员不可删除', type: 'error', duration: 1700})
+          return
+        }
+
+        if (id == this.adminInfo.id){
+          this.$message({message: '登录用户不可删除', type: 'error', duration: 1700})
+          return
+        }
+
         this.$confirm('是否确定删除该员工?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -225,9 +249,9 @@
           delAdmin(id).then(res => {
             if (res.success) {
               this.getAdminList()
-              this.$message({ message: '删除员工成功', type: 'success', duration: 1700 })
+              this.$message({message: '删除员工成功', type: 'success', duration: 1700})
             } else {
-              this.$message({ message: '删除员工失败', type: 'error', duration: 1700 })
+              this.$message({message: '删除员工失败', type: 'error', duration: 1700})
             }
           })
         })
@@ -248,4 +272,26 @@
     margin-bottom: 10px;
     float: right;
   }
+
+   .el-button--primary {
+    color: #FFF;
+    background-color: #FF6336;
+    border-color: #FF6336;
+  }
+  .el-button:focus, .el-button:hover {
+    color: #FF6336;
+    border-color: #FF6336;
+    background-color: #FF6336;
+  }
+  .el-button:focus, .el-button:hover {
+    color: #FFF;
+    border-color: #FF6336;
+    background-color: #FF6336;
+  }
+  .el-button--primary:focus, .el-button--primary:hover {
+    background: #FF6336;
+    border-color: #FF6336;
+    color: #FFF;
+  }
+
 </style>

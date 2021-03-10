@@ -16,8 +16,10 @@
       </el-form-item>
 
       <el-form-item label="性别" prop="sex">
-        <el-radio v-model="addInfo.sex" label="0" border>女</el-radio>
-        <el-radio v-model="addInfo.sex" label="1" border>男</el-radio>
+        <div class="form-width">
+          <el-radio v-model="addInfo.sex" label="0" border>女</el-radio>
+          <el-radio v-model="addInfo.sex" label="1" border>男</el-radio>
+        </div>
       </el-form-item>
 
       <el-form-item label="籍贯" prop="nativeplace">
@@ -109,8 +111,8 @@
       </el-form-item>
 
       <el-form-item style="text-align: right">
-        <el-button type="info" @click="resetForm">重置</el-button>
-        <el-button type="primary" @click="submitForm">保存</el-button>
+        <el-button type="info" size="mini"  @click="resetForm">重置</el-button>
+        <el-button type="warning" size="mini" @click="submitForm">保存</el-button>
       </el-form-item>
     </el-form>
 
@@ -243,15 +245,15 @@
     methods: {
       async init() {
         // 获取创建者
-        // let admin = JSON.parse(window.localStorage.getItem('AdminInfo'))
-        // if (admin == undefined || admin == null || admin == '') {
-        //   this.$router.push('/login')
-        //   this.$message({message: '请先登录再操作', type: 'error', duration: 1700})
-        //   return
-        // } else {
-        //   this.adminInfo = admin
-        //   addDetailInfo.creator = admin.id
-        // }
+        let admin = JSON.parse(window.localStorage.getItem('AdminInfo'))
+        if (admin == undefined || admin == null || admin == '') {
+          this.$router.push('/login')
+          this.$message({message: '请先登录再操作', type: 'error', duration: 1700})
+          return
+        } else {
+          this.adminInfo = admin
+          addDetailInfo.creator = admin.id
+        }
 
         // 获取分类
         let params = {
@@ -323,7 +325,6 @@
         if (!this.checkForm) {
           return;
         }
-        console.log(this.addInfo)
         await addScenery(this.addInfo).then(res => {
           if (res.success) {
             this.$message({message: '成功添加', type: 'success', duration: 1700})
@@ -362,7 +363,7 @@
       // 封面上传成功
       handleAvatarSuccess(res, file) {
         if (res.success) {
-          this.addInfoDetail.image = res.data.location
+          this.addInfo.image = res.data.location
         } else {
           this.$message({message: '封面上传失败，请重新上传', type: 'error', duration: 1700})
         }
@@ -395,10 +396,11 @@
   }
 
   .avatar {
-    width: 240px;
-    height: 153px;
+    width: 215px;
+    height: 270px;
     display: block;
     border-radius: 2.5%;
+    border: solid 1px #e7e7e7;
   }
 
   .form-width {

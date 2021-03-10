@@ -6,17 +6,18 @@
 
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
-        <div class="avatar-wrapper">
-          <img :src="icon" class="user-avatar">
-          <i class="el-icon-caret-bottom"/>
+        <div class="avatar-wrapper" style="cursor:pointer">
+<!--          <img :src="icon" class="user-avatar">-->
+<!--          <i class="el-icon-caret-bottom"/>-->
+          {{username}}
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
-          <router-link :to="{path:'/admin/info'}">
-            <el-dropdown-item>个人中心</el-dropdown-item>
-          </router-link>
+<!--          <router-link :to="{path:'/admin/info'}">-->
+<!--            <el-dropdown-item>个人中心</el-dropdown-item>-->
+<!--          </router-link>-->
 
           <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">退出登录</span>
+            <span style="display:block;">退出</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>

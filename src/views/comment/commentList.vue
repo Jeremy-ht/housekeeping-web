@@ -5,10 +5,17 @@
       <!--表格-->
       <el-table :data="commonList" stripe style="width: 100%; margin-top: 10px" border size="small">
         <el-table-column label="#" type="index" align="center"/>
-        <el-table-column label="标题" prop="title" align="center"/>
-        <el-table-column label="所属分类" prop="categoryname" align="center"/>
+        <el-table-column label="评论用户" prop="uname" align="center"/>
+        <el-table-column label="家政人员" prop="name" align="center"/>
+
+        <el-table-column label="照片" prop="image" align="center">
+          <template slot-scope="scope">
+            <img :src="scope.row.image" style="width: 40px;height: 50px">
+          </template>
+        </el-table-column>
+
+        <el-table-column label="分类" prop="categoryname" align="center"/>
         <el-table-column label="评论内容" prop="commentary" align="center"/>
-        <el-table-column label="评论者" prop="uname" align="center"/>
         <el-table-column label="评论时间" align="center" width="170px">
           <template slot-scope="scope">
             <i class="el-icon-time"/>

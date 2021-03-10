@@ -8,7 +8,7 @@
 
 <script>
   import * as echart from 'echarts'
-  import {getEchartsCategory} from '../../api/common'
+  import {getEchartsYY} from '../../api/common'
 
   export default {
     name: 'chart',
@@ -16,10 +16,7 @@
       return {
         charts: '',
         opinion: ['男', '女'],
-        opinionData: [
-
-
-        ]
+        opinionData: []
       }
     },
     mounted() {
@@ -28,7 +25,7 @@
 
     methods: {
       async initEcharts() {
-       await getEchartsCategory().then(res => {
+        await getEchartsYY().then(res => {
           if (res.success) {
             this.opinionData = []
             this.opinionData = res.data.data
@@ -38,64 +35,27 @@
         let myChart = echart.init(document.getElementById('main'))
         // 绘制图表
         myChart.setOption({
-          backgroundColor: '#2c343c',
-
           title: {
-            text: '主要分类景点数目',
-            left: 'center',
-            top: 20,
-            textStyle: {
-              color: '#ccc'
-            }
+            text: '家政预约增长条形图'
           },
-
-          tooltip: {
-            trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)'
+          xAxis: {
+            type: 'category',
+            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月',
+              '8月', '9月', '10月', '11月', '12月']
           },
-
-          visualMap: {
-            show: false,
-            min: 0,
-            max: 30,
-            inRange: {
-              colorLightness: [0, 1]
-            }
+          yAxis: {
+            type: 'value',
+            boundaryGap: [0, 1]
           },
-          series: [
-            {
-              name: '分类占比',
-              type: 'pie',
-              radius: '60 %',
-              center: ['50%', '50%'],
-              data: this.opinionData.sort(function(a, b) {
-                return a.value - b.value
-              }),
-              roseType: 'radius',
-              label: {
-                color: 'rgba(255, 255, 255, 0.3)'
-              },
-              labelLine: {
-                lineStyle: {
-                  color: 'rgba(255, 255, 255, 0.3)'
-                },
-                smooth: 0.2,
-                length: 10,
-                length2: 20
-              },
-              itemStyle: {
-                color: '#fb0848',
-                shadowBlur: 200,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              },
-
-              animationType: 'scale',
-              animationEasing: 'elasticOut',
-              animationDelay: function(idx) {
-                return Math.random() * 200
-              }
+          series: [{
+            data: this.opinionData,
+            type: 'bar',
+            showBackground: true,
+            backgroundStyle: {
+              color: 'rgba(180, 180, 180, 0.2)'
             }
-          ]
+          }]
+
         })
 
       }

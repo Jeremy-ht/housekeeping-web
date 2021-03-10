@@ -33,18 +33,18 @@ export const constantRoutes = [
   /**
    *   首页
    */
-  // 用户首页    http://www.51ejz.com/home_working.aspx
+
   {
-    path: '/scenery/home',
+    path: '/home',
     hidden: true,
-    name: '景区网',
+    name: '大家帮家政',
     component: () => import('@/views/home/index'),
-    meta: {title: '景区网'}
+    meta: {title: '大家帮家政'}
   },
 
   // 登录
   {
-    path: '/scenery/userLogin',
+    path: '/userLogin',
     hidden: true,
     name: '登录',
     component: () => import('@/views/home/userLogin'),
@@ -53,7 +53,7 @@ export const constantRoutes = [
 
   // 注册
   {
-    path: '/scenery/register',
+    path: '/reg',
     hidden: true,
     name: '注册',
     component: () => import('@/views/home/register'),
@@ -64,11 +64,11 @@ export const constantRoutes = [
 
   // 详情
   {
-    path: '/scenery/sceneryInfo',
+    path: '/info/:id',
     hidden: true,
-    name: '景区详情',
+    name: '详情',
     component: () => import('@/views/home/sceneryInfo'),
-    meta: {title: '景区详情'}
+    meta: {title: '详情'}
   },
 
 
@@ -93,23 +93,23 @@ export const constantRoutes = [
   },
 
   {
-    path: '/sys',
+    path: '/homes',
     component: Layout,
     redirect: '/admin',
     name: '系统管理',
-    meta: {title: '系统管理', icon: 'el-icon-s-tools'},
+    meta: {title: '系统管理', icon: 'table'},
     children: [
       {
         path: 'admin',
         name: 'admin',
         component: () => import('@/views/admin/index'),
-        meta: {title: '员工列表', icon: 'table'}
+        meta: {title: '员工列表'}
       },
       {
         path: 'user',
         name: 'user',
         component: () => import('@/views/user/index'),
-        meta: {title: '用户列表', icon: 'table'}
+        meta: {title: '用户列表'}
       }
     ]
   },
@@ -121,25 +121,25 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/housekeeping/detail',
     name: '家政管理',
-    meta: {title: '家政管理', icon: 'el-icon-s-cooperation'},
+    meta: {title: '家政管理', icon: 'table'},
     children: [
       {
         path: 'list',
         name: '家政人员',
         component: () => import('@/views/scenery/list'),
-        meta: {title: '人员列表', icon: 'table'}
+        meta: {title: '人员列表',}
       },
       {
         path: 'detail',
         name: '添加人员',
         component: () => import('@/views/scenery/detail'),
-        meta: {title: '添加人员', icon: 'table'}
+        meta: {title: '添加人员'}
       },
       {
         path: 'category',
         name: '家政分类',
         component: () => import('@/views/scenery/category'),
-        meta: {title: '家政分类', icon: 'table'}
+        meta: {title: '家政分类'}
       }
     ]
   },
@@ -151,7 +151,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/index/reservation',
     name: '预定管理',
-    meta: {title: '预定管理', icon: 'el-icon-s-claim'},
+    meta: {title: '预定管理', icon: 'table'},
     children: [
       {
         path: 'reservation',
@@ -159,19 +159,7 @@ export const constantRoutes = [
         component: () => import('@/views/index/reservation'),
         meta: {title: '预定列表', icon: 'table'}
       },
-      // {
-      //   path: 'heat',
-      //   name: '热门景点',
-      //   component: () => import('@/views/index/heat'),
-      //   meta: { title: '热门景点', icon: 'table' }
-      // },
-      // {
-      //   path: 'city',
-      //   name: '城市攻略',
-      //   component: () => import('@/views/index/city'),
-      //   meta: { title: '城市攻略', icon: 'table' }
-      // }
-    ]
+         ]
   },
   /**
    *  评论
@@ -184,7 +172,7 @@ export const constantRoutes = [
         path: 'commentList',
         name: '评论列表',
         component: () => import('@/views/comment/commentList'),
-        meta: {title: '评论列表', icon: 'el-icon-s-comment'}
+        meta: {title: '评论列表', icon: 'table'}
       }
     ]
   },
@@ -195,44 +183,26 @@ export const constantRoutes = [
     path: '/chart',
     component: Layout,
     redirect: '/chart/chart',
-    name: '统计列表',
-    meta: {title: '统计列表', icon: 'el-icon-s-marketing'},
+    name: '数据统计',
+    meta: {title: '数据统计', icon: 'table'},
     children: [
       {
         path: 'chart',
-        name: '景点统计',
+        name: '预约数量',
         component: () => import('@/views/chart/chart'),
-        meta: {title: '景点统计', icon: 'table'}
+        meta: {title: '预约数量'}
+      },
+      {
+        path: 'info',
+        name: '家政人员',
+        component: () => import('@/views/chart/info'),
+        meta: {title: '家政人员'}
       },
       {
         path: 'user',
         name: '用户统计',
         component: () => import('@/views/chart/user'),
-        meta: {title: '用户统计', icon: 'table'}
-      }
-    ]
-  },
-  /**
-   * 日志管理
-   */
-  {
-    path: '/log',
-    component: Layout,
-    redirect: '/log/sysLog',
-    name: '日志管理',
-    meta: {title: '日志管理', icon: 'el-icon-s-claim'},
-    children: [
-      {
-        path: 'sysLog',
-        name: '系统日志',
-        component: () => import('@/views/log/sysLog'),
-        meta: {title: '系统日志', icon: 'table'}
-      },
-      {
-        path: 'userLog',
-        name: '用户日志',
-        component: () => import('@/views/log/userLog'),
-        meta: {title: '用户日志', icon: 'table'}
+        meta: {title: '用户统计'}
       }
     ]
   },

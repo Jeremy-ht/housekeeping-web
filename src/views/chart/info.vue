@@ -8,10 +8,10 @@
 
 <script>
   import * as echart from 'echarts'
-  import { getEchartsUser } from '../../api/common'
+  import { getEchartsInfo } from '../../api/common'
 
   export default {
-    name: 'user',
+    name: 'info',
     data() {
       return {
         opinionData:  []
@@ -23,7 +23,7 @@
 
     methods: {
       async initEcharts() {
-        await getEchartsUser().then(res => {
+        await getEchartsInfo().then(res => {
           if (res.success) {
             console.log(res.data.data)
             this.opinionData = []
@@ -32,28 +32,40 @@
         })
 
         let myChart = echart.init(document.getElementById('main'))
+
         // 绘制图表
         myChart.setOption({
           title: {
-            text: '用户增长图'
+            text: '家政人员条形图'
+          },
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'shadow'
+            }
           },
           legend: {
             data: ['2021年']
           },
-          tooltip: {},
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+          },
           xAxis: {
+            type: 'value',
+            boundaryGap: [0, 1]
+          },
+          yAxis: {
             type: 'category',
             data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月',
               '8月', '9月','10月', '11月', '12月']
           },
-          yAxis: {
-            type: 'value',
-            boundaryGap: [0, 1]
-          },
           series: [{
             name: '2021年',
             data: this.opinionData,
-            type: 'line'
+            type: 'bar'
           }]
         })
 

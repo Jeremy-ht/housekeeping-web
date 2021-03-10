@@ -7,59 +7,68 @@
       <!-- ========================= -->
       <div class="container-item-one">
         <div class="one-left">
-          <img src="http://www.51ejz.com/upimages/f2d3687b-4e50-462d-809c-c3f72f4b4ab4.jpg">
-          <span><b style="cursor: pointer;">赵家群|</b> 安徽</span>
-          <i>48岁&nbsp;12年工作经验</i>
+          <img :src="detailInfo.image">
+          <!--          <span><b style="cursor: pointer;">{{detailInfo.name}}|</b> {{detailInfo.nativeplace}}</span>-->
+          <!--          <i>{{detailInfo.age}}岁&nbsp;{{detailInfo.workexper}}年工作经验</i>-->
         </div>
 
         <div class="one-right">
-          <div class="one-right-1">黎阿姨（不住家保姆）&nbsp;&nbsp;女&nbsp;&nbsp;44岁&nbsp;&nbsp;
-            来自辽宁&nbsp;&nbsp;当前状态：待岗
+          <div class="one-right-1">
+             <span style="color:#FF7124;font-size: 18px">
+            {{detailInfo.name}}&nbsp;
+             </span>
+            <span style="margin-left: 5px"> {{detailInfo.sex==0? '女 ' : '男 ' }}&nbsp;</span>
+            <span style="margin-left: 10px"> {{detailInfo.age + '岁 '}}&nbsp;&nbsp;</span>
+            <span style="margin-left: 10px"> 来自{{detailInfo.nativeplace}}&nbsp;&nbsp;</span>
+<!--            <span style="margin-left: 10px">当前状态：1111</span>-->
           </div>
-          <div class="one-right-2">勤快</div>
+          <div class="one-right-2">{{detailInfo.introduction}}</div>
           <div class="one-right-3">
             <div class="detail-one">
               <div class="detail1">籍贯</div>
-              <div class="detail2"></div>
+              <div class="detail2">{{detailInfo.nativeplace}}</div>
 
               <div class="detail1">性别</div>
-              <div class="detail2"></div>
+              <div class="detail2">{{detailInfo.sex==0? '女 ' : '男 ' }}</div>
 
               <div class="detail1">身高</div>
-              <div class="detail2"></div>
+              <div class="detail2">{{detailInfo.height + 'CM'}}</div>
 
               <div class="detail1">体重</div>
-              <div class="detail2"></div>
+              <div class="detail2">{{detailInfo.weight + 'KG'}}</div>
 
-              <div class="detail1">婚姻状况</div>
-              <div class="detail2"></div>
 
             </div>
             <div class="detail-two">
               <div class="detail1">工作经验</div>
-              <div class="detail2"></div>
+              <div class="detail2">{{detailInfo.workexper + '年'}}</div>
 
-              <div class="detail1">做过几家</div>
-              <div class="detail2"></div>
+              <!--              <div class="detail1">做过几家</div>-->
+              <!--              <div class="detail2"></div>-->
 
               <div class="detail1">期望薪资</div>
-              <div class="detail2"></div>
+              <div class="detail2">{{detailInfo.salary}}</div>
 
               <div class="detail1">食宿</div>
-              <div class="detail2"></div>
+              <div class="detail2">{{detailInfo.marriage==2? '不留宿' : '留宿' }}</div>
 
-              <div class="detail1">学历</div>
-              <div class="detail2"></div>
+              <div class="detail1">婚姻状况</div>
+              <div class="detail2">{{detailInfo.marriage==2? '已婚' : '未婚' }}</div>
+              <!--              <div class="detail1">学历</div>-->
+              <!--              <div class="detail2"></div>-->
 
             </div>
           </div>
           <div class="one-right-4">
 
           </div>
-          <div class="one-right-5">
-            <div class="yy">我要预约</div>
+          <div class="one-right-5"  v-if="isYUYUE">
+            <div class="yyg">已预约</div>
           </div>
 
+          <div class="one-right-5"  v-else @click="goYY(detailInfo.id)">
+            <div class="yy">我要预约</div>
+          </div>
 
         </div>
       </div>
@@ -72,38 +81,68 @@
       <div class="container-item-two">
         <el-tabs v-model="activeName" type="card" @tab-click="handleClick" class="el-tabs">
           <el-tab-pane label="基本信息" name="first">
-            <div class="base-info-name base">赵家群</div>
+            <div class="base-info-name base"> {{detailInfo.name}}</div>
 
             <div class="base-info">
               <div class="base-info-item base">
 
                 <div class="base-item">
                   <div class="base-item-left">姓名</div>
-                  <div class="base-item-right">赵家群</div>
+                  <div class="base-item-right"> {{detailInfo.name}}</div>
                 </div>
 
                 <div class="base-item">
                   <div class="base-item-left">性别</div>
-                  <div class="base-item-right">女</div>
+                  <div class="base-item-right">{{detailInfo.sex==0? '女' : '男' }}</div>
                 </div>
 
                 <div class="base-item">
                   <div class="base-item-left">年龄</div>
-                  <div class="base-item-right">44岁</div>
+                  <div class="base-item-right">{{detailInfo.age + '岁 '}}</div>
                 </div>
 
                 <div class="base-item">
                   <div class="base-item-left">籍贯</div>
-                  <div class="base-item-right">辽宁</div>
+                  <div class="base-item-right">{{detailInfo.nativeplace}}</div>
                 </div>
 
 
+                <div class="base-item">
+                  <div class="base-item-left">身高</div>
+                  <div class="base-item-right">{{detailInfo.height + 'CM'}}</div>
+                </div>
+
+
+                <div class="base-item">
+                  <div class="base-item-left">体重</div>
+                  <div class="base-item-right">{{detailInfo.weight + 'KG'}}</div>
+                </div>
+
+
+                <div class="base-item">
+                  <div class="base-item-left">期望薪资</div>
+                  <div class="base-item-right">{{detailInfo.salary}}</div>
+                </div>
+
+                <div class="base-item">
+                  <div class="base-item-left">食宿</div>
+                  <div class="base-item-right">{{detailInfo.marriage==2? '不留宿' : '留宿' }}</div>
+                </div>
+
+                <div class="base-item">
+                  <div class="base-item-left">婚姻状况</div>
+                  <div class="base-item-right">{{detailInfo.marriage==2? '已婚' : '未婚' }}
+                  </div>
+                </div>
               </div>
             </div>
           </el-tab-pane>
 
           <el-tab-pane label="详细介绍" name="second">
             <div class="base-info">
+              <div style="margin-top: 10px">
+                {{detailInfo.introduction}}
+              </div>
             </div>
           </el-tab-pane>
 
@@ -128,89 +167,23 @@
           </div>
 
           <div class="comment-content">
-            <div class="comment-content-item">
+            <div class="comment-content-item" v-for="item in commentList">
               <div class="comment-content-item-left">
                 <img class="login-img"
-                     src="https://himg.bdimg.com/sys/portrait/item/wise.1.fe14b7b5.3HTn7WQ5wStcXC4kozU2aQ.jpg"/>
+                     :src="item.uimage"/>
               </div>
 
               <div class="comment-content-item-right">
                 <div class="comment-content-name">
-                  庾瑞灵0
+                  {{item.uname}}
                 </div>
 
                 <div class="comment-content-content">
-                  建议国家派两个航母编队，封锁北明奇海峡和英吉利海峡，
-                  强制隔离英国，设立禁飞区，英国飞机敢起飞就击落！
+                  {{item.commentary}}
                 </div>
 
                 <div class="comment-content-time">
-                  44分钟前
-                </div>
-              </div>
-            </div>
-
-            <div class="comment-content-item">
-              <div class="comment-content-item-left">
-                <img class="login-img"
-                     src="https://himg.bdimg.com/sys/portrait/item/wise.1.fe14b7b5.3HTn7WQ5wStcXC4kozU2aQ.jpg"/>
-              </div>
-
-              <div class="comment-content-item-right">
-                <div class="comment-content-name">
-                  庾瑞灵0
-                </div>
-
-                <div class="comment-content-content">
-                  建议国家派两个航母编队，封锁北明奇海峡和英吉利海峡，
-                  强制隔离英国，设立禁飞区，英国飞机敢起飞就击落！
-                </div>
-
-                <div class="comment-content-time">
-                  44分钟前
-                </div>
-              </div>
-            </div>
-
-            <div class="comment-content-item">
-              <div class="comment-content-item-left">
-                <img class="login-img"
-                     src="https://himg.bdimg.com/sys/portrait/item/wise.1.fe14b7b5.3HTn7WQ5wStcXC4kozU2aQ.jpg"/>
-              </div>
-
-              <div class="comment-content-item-right">
-                <div class="comment-content-name">
-                  庾瑞灵0
-                </div>
-
-                <div class="comment-content-content">
-                  建议国家派两个航母编队，封锁北明奇海峡和英吉利海峡，
-                  强制隔离英国，设立禁飞区，英国飞机敢起飞就击落！
-                </div>
-
-                <div class="comment-content-time">
-                  44分钟前
-                </div>
-              </div>
-            </div>
-            <div class="comment-content-item">
-              <div class="comment-content-item-left">
-                <img class="login-img"
-                     src="https://himg.bdimg.com/sys/portrait/item/wise.1.fe14b7b5.3HTn7WQ5wStcXC4kozU2aQ.jpg"/>
-              </div>
-
-              <div class="comment-content-item-right">
-                <div class="comment-content-name">
-                  庾瑞灵0
-                </div>
-
-                <div class="comment-content-content">
-                  建议国家派两个航母编队，封锁北明奇海峡和英吉利海峡，
-                  强制隔离英国，设立禁飞区，英国飞机敢起飞就击落！
-                </div>
-
-                <div class="comment-content-time">
-                  44分钟前
+                  {{item.creatime}}
                 </div>
               </div>
             </div>
@@ -228,7 +201,7 @@
 </template>
 
 <script>
-  import {getSceneryInfo, addComment, getCommentList}
+  import {getSceneryInfo, addComment, goYY, isYY, getCommentList}
     from '../../api/common'
   import '../../assets/iconfont/iconfont'
 
@@ -249,23 +222,28 @@
         detailId: 0,
         categoryid: 0,
         detailInfo: {
-          title: '', // 标题
-          introduction: '', // 正文
-          gopath: '', // 路线
-          feature: '', // 特色
-          categoryname: '', // 分类
-          cover: '',
-          creator: '', // 创建者
+          id: 0,
+          name: '',
+          sex: '0',
+          age: 18,
+          nativeplace: '', // 籍贯
+          marriage: '2', // 婚姻状况
+          currentstate: 0, // 当前状态
+          height: '',
+          weight: '',
+          workexper: '', // 工作经验
+          salary: '', // 期望薪资
+          noroom: '2', // 食宿
+          introduction: '', // 详细介绍
           phone: '', // 联系方式
-          pay: '', // 门票
-          opentime: '', // 开放时间
-          username: '',
-          releasetime: ''
+          creator: 0,
+          categoryid: '',
+          image: ''
         },
 
         addComment: '',
-
-
+        userid: 0,
+        isYUYUE: false,
       }
     },
     created() {
@@ -281,13 +259,12 @@
 
       // 初始化
       async init() {
-        this.categoryid = this.$route.params.categoryid
         this.detailId = this.$route.params.id
-
         // 获取详情
         await getSceneryInfo(this.detailId).then(res => {
           if (res.success) {
-            this.detailInfo = res.data.data
+            this.detailInfo = res.data.info
+            console.log(this.detailInfo)
           } else {
             this.$message({
               message: '详情获取失败，请刷新再试！',
@@ -295,13 +272,21 @@
               duration: 2000
             })
           }
+        })
 
-          console.log(this.detailInfo)
+        let user = JSON.parse(window.localStorage.getItem('UserInfoHousekeeping'))
 
+        // 查看是否预约
+        await isYY(user.id, this.detailId ).then(res => {
+          if (res.success) {
+            if (res.data.data)
+              this.isYUYUE = true
+          }
         })
 
         // 评论
         await getCommentList(1, 100, this.detailId).then(res => {
+          console.log(res.data.data)
           if (res.success) {
             this.commentList = res.data.data
             this.countList = res.data.data.length
@@ -309,6 +294,39 @@
 
         })
 
+      },
+
+      goYY(id) {
+        console.log(id)
+        if (this.isLogin()) {
+
+          this.$confirm('是否确定预约?', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(() => {
+            goYY(this.userid, id).then(res => {
+              if (res.success) {
+                this.init()
+                this.$message({message: res.message, type: 'success', duration: 2100})
+              } else {
+                this.$message({message: res.message, type: 'error', duration: 1700})
+              }
+            })
+          })
+
+
+        }
+
+      },
+      isLogin() {
+        let user = JSON.parse(window.localStorage.getItem('UserInfoHousekeeping'))
+        if (user == undefined || user == null || user == '') {
+          this.$message({message: '请先登录', type: 'error', duration: 1700})
+          this.$router.push('/userLogin')
+        }
+        this.userid = user.id
+        return true
       },
 
       // 重置添加用户表单
@@ -319,8 +337,7 @@
         // 是否登录
         let user = JSON.parse(window.localStorage.getItem('UserInfo'))
         if (user == undefined || user == null || user == '') {
-          this.$message({message: '请先登录', type: 'error', duration: 1700})
-          this.$router.push('/scenery/userLogin/1')
+          this.$router.push('/userLogin/1')
         } else {
           this.user = user
           this.dilog = true
@@ -427,6 +444,9 @@
     margin-top: 20px;
     border-top: 1px dashed #e9e9e9;
     line-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .one-right-3 {
@@ -460,15 +480,30 @@
     border-radius: 4px;
   }
 
+  .yyg {
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    background-color: #dadcda;
+    color: black;
+    float: right;
+    cursor: pointer;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+
+
   .detail-one {
-    width: 800px;
+    width: 650px;
     height: 42px;
     line-height: 42px;
     border: 1px solid #e9e9e9;
   }
 
   .detail-two {
-    width: 800px;
+    width: 650px;
     height: 41px;
     line-height: 41px;
     border-left: 1px solid #e9e9e9;

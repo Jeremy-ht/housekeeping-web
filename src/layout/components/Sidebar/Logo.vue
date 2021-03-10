@@ -34,7 +34,7 @@
     },
     data() {
       return {
-        title: '家政后台管理系统'
+        title: ''
       }
     }
   }
@@ -81,7 +81,7 @@
   .sidebar-logo-container {
     position: relative;
     width: 100%;
-    height: 50px;
+    height: 0;
     /*line-height: 50px;*/
     background: #2b2f3a;
     text-align: center;
@@ -93,7 +93,7 @@
 
       & .sidebar-logo {
         width: 32px;
-        height: 32px;
+        height: 0;
         vertical-align: middle;
         margin-right: 12px;
       }

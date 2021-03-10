@@ -3,19 +3,19 @@
     <el-card class="box-card" shadow="hover">
 
       <el-row :gutter="20">
-<!--        <el-col :span="20">-->
-<!--          <el-alert :title="alertMsg" :closable="false" type="warning" show-icon>-->
-<!--          </el-alert>-->
-<!--        </el-col>-->
+        <!--        <el-col :span="20">-->
+        <!--          <el-alert :title="alertMsg" :closable="false" type="warning" show-icon>-->
+        <!--          </el-alert>-->
+        <!--        </el-col>-->
         <el-col>
           <!-- 新增按钮 -->
-          <el-button class="admin-add-btn" type="primary" size="small" @click="addCateBtn">添加分类</el-button>
+<!--          <el-button class="admin-add-btn" type="primary" size="small" @click="addCateBtn">添加分类</el-button>-->
         </el-col>
       </el-row>
 
 
       <!-- 表格 -->
-      <el-table :data="cateList" stripe style="width: 100%; margin-top: 10px" border size="small">
+      <el-table :data="cateList" stripe style="width: 100%" border>
         <el-table-column label="#" type="index" align="center"/>
         <el-table-column label="分类名称" prop="categoryname" align="center"/>
         <el-table-column label="创建者" prop="username" align="center"/>
@@ -29,11 +29,11 @@
         <el-table-column label="操作" align="center">
           <template slot-scope="scope">
             <!--修改-->
-            <el-button type="success" size="mini" @click="updCateBtn(scope.row.id)">
+            <el-button type="warning" size="mini" @click="updCateBtn(scope.row.id)">
               修改
             </el-button>
             <!-- 删除 -->
-            <el-button type="danger" size="mini" @click="delCateBtn(scope.row.id)">
+            <el-button type="warning" size="mini" @click="delCateBtn(scope.row.id)">
               删除
             </el-button>
           </template>
@@ -91,7 +91,7 @@
 
 <script>
   import PageBar from '@/components/PageBar'
-  import { getCategoryList, delCategory, addCategory, updCategory, getCategoryById } from '../../api/common'
+  import {getCategoryList, delCategory, addCategory, updCategory, getCategoryById} from '../../api/common'
 
   export default {
     data() {
@@ -100,7 +100,6 @@
         pagenum: 1,
         pagesize: 8,
         pageTotal: 0,
-        alertMsg: '热门景区 、特色美食 、人文历史 、城市攻略 、首页轮播 、购物天堂 、旅游规划属于固定分类，不可删除！',
         cateList: [],
         addDialogVisible: false,
         updDialogVisible: false,
@@ -114,8 +113,8 @@
         // 添加分类表单验证
         addCateRules: {
           categoryname: [
-            { required: true, message: '请输入分类名', trigger: 'blur' },
-            { min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'blur' }
+            {required: true, message: '请输入分类名', trigger: 'blur'},
+            {min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'blur'}
           ]
 
         }
@@ -161,7 +160,7 @@
       },
       addCate() {
         if (this.addCateInfo.categoryname == '') {
-          this.$message({ message: '分类名称不能为空!', type: 'error', duration: 1700 })
+          this.$message({message: '分类名称不能为空!', type: 'error', duration: 1700})
           return
         }
 
@@ -169,9 +168,9 @@
           if (res.success) {
             this.getCateList()
             this.addDialogVisible = false
-            this.$message({ message: res.message, type: 'success', duration: 1700 })
+            this.$message({message: res.message, type: 'success', duration: 1700})
           } else {
-            this.$message({ message: res.message, type: 'error', duration: 1700 })
+            this.$message({message: res.message, type: 'error', duration: 1700})
           }
         })
 
@@ -184,14 +183,14 @@
             this.updCateInfo = res.data.data
             this.updDialogVisible = true
           } else {
-            this.$message({ message: res.message, type: 'error', duration: 1700 })
+            this.$message({message: res.message, type: 'error', duration: 1700})
           }
         })
 
       },
       updCate() {
         if (this.updCateInfo.categoryname == '') {
-          this.$message({ message: '分类名称不能为空!', type: 'error', duration: 1700 })
+          this.$message({message: '分类名称不能为空!', type: 'error', duration: 1700})
           return
         }
 
@@ -199,9 +198,9 @@
           if (res.success) {
             this.getCateList()
             this.updDialogVisible = false
-            this.$message({ message: res.message, type: 'success', duration: 1700 })
+            this.$message({message: res.message, type: 'success', duration: 1700})
           } else {
-            this.$message({ message: res.message, type: 'error', duration: 1700 })
+            this.$message({message: res.message, type: 'error', duration: 1700})
           }
         })
       },
@@ -216,9 +215,9 @@
           delCategory(id).then(res => {
             if (res.success) {
               this.getCateList()
-              this.$message({ message: res.message, type: 'success', duration: 1700 })
+              this.$message({message: res.message, type: 'success', duration: 1700})
             } else {
-              this.$message({ message: res.message, type: 'error', duration: 1700 })
+              this.$message({message: res.message, type: 'error', duration: 1700})
             }
           })
         })

@@ -101,7 +101,7 @@
 
                 <el-form-item label="当前状态">
                   <el-button size="mini" type="danger" v-if="props.row.currentstate == 0" plain>待业</el-button>
-                  <el-button size="mini" type="success" v-else plain>工作中</el-button>
+                  <el-button size="mini" type="success" v-else plain>预订中</el-button>
                 </el-form-item>
 
               </el-form>
@@ -109,19 +109,46 @@
           </el-table-column>
 
           <el-table-column label="姓名" prop="name" align="center"></el-table-column>
-          <el-table-column label="照片" prop="image" align="center"></el-table-column>
-          <el-table-column label="年龄" prop="age" align="center"></el-table-column>
-          <el-table-column label="性别" prop="sex" align="center"></el-table-column>
-          <el-table-column label="工作经验" prop="workexper" align="center"></el-table-column>
-          <el-table-column label="当前状态" prop="currentstate" align="center"></el-table-column>
+
+          <el-table-column label="照片" prop="image" align="center">
+            <template slot-scope="scope">
+              <img :src="scope.row.image" style="width: 40px;height: 50px">
+            </template>
+          </el-table-column>
+
+          <el-table-column label="年龄" prop="age" align="center">
+            <template slot-scope="scope">
+              <span>{{ scope.row.age + '岁'}}</span>
+            </template>
+          </el-table-column>
+
+          <el-table-column label="性别" prop="sex" align="center">
+            <template slot-scope="scope">
+              <span v-if="scope.row.sex == 1">男</span>
+              <span v-else>女</span>
+            </template>
+          </el-table-column>
+
+          <el-table-column label="工作经验" prop="workexper" align="center">
+            <template slot-scope="scope">
+              <span>{{ scope.row.workexper + '年'}}</span>
+            </template>
+          </el-table-column>
+
+          <el-table-column label="当前状态" prop="currentstate" align="center">
+            <template slot-scope="scope">
+              <el-button size="mini" type="danger" v-if="scope.row.currentstate == 0" plain>待业</el-button>
+              <el-button size="mini" type="success" v-else plain>预订中</el-button>
+            </template>
+          </el-table-column>
 
           <el-table-column label="操作" align="center">
             <template slot-scope="scope">
-              <el-button type="primary" size="mini" @click="updInfo(scope.row.id)">
-                修改
-              </el-button>
+<!--              <el-button type="warning" size="mini" @click="updInfo(scope.row.id)">-->
+<!--                修改-->
+<!--              </el-button>-->
 
-              <el-button type="danger" size="mini" @click="delDetailBtn(scope.row.id)">
+              <el-button type="warning" size="mini" @click="delDetailBtn(scope.row.id)">
                 删除
               </el-button>
             </template>
@@ -144,7 +171,7 @@
 
 <script>
   import PageBar from '@/components/PageBar'
-  import {getInfoList,delInfo, getSceneryList, pullScenery, delScenery, disableComment} from '../../api/common'
+  import {getInfoList, delInfo, getSceneryList, pullScenery, delScenery, disableComment} from '../../api/common'
 
   export default {
 
@@ -259,25 +286,6 @@
       handleCurrentChange(pagenum) {
         this.pagenum = pagenum
         this.getInit()
-      },
-
-      pullDetail(id) {
-
-        this.$confirm('是否确定发布?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          pullScenery(id).then(res => {
-            if (res.success) {
-              this.$message({message: '发布成功', type: 'success', duration: 1700})
-              this.getInit()
-            } else {
-              this.$message({message: '发布失败', type: 'error', duration: 1700})
-            }
-          })
-        })
-
       },
 
       updInfo(id) {

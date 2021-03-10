@@ -1,180 +1,149 @@
 <template>
   <div class="home-container">
-    <div class="home">
 
-      <div class="home-item">
-        <!-- 图标 -->
-        <div class="home-item-svg item">
-          <svg class="icon iconfont" aria-hidden="true">
-            <use xlink:href="#icon-yonghu1"/>
-          </svg>
-        </div>
+    <div class="home-container-item">
 
-        <!-- 文字 -->
-        <div class="home-item-text item">
-          <div class="text-div" @click="goPath(1)">新增用户</div>
-          <div class="number-div" @click="goPath(1)">{{home.todayUser}}</div>
+      <div class="item-one">
+        <div id="main1" style="width: 480px;height: 480px;">
+
         </div>
       </div>
 
-      <div class="home-item">
-        <!-- 图标 -->
-        <div class="home-item-svg item">
-          <svg class="icon iconfont" aria-hidden="true">
-            <use xlink:href="#icon-tubiaozhizuomobanyihuifu-"/>
-          </svg>
-        </div>
 
-        <!-- 文字 -->
-        <div class="home-item-text item">
-          <div class="text-div" @click="goPath(2)">用户总计</div>
-          <div class="number-div" @click="goPath(2)">{{home.totalUser}}</div>
-        </div>
-      </div>
+      <div class="item-two">
+        <div id="main2" style="width: 400px;height: 400px;">
 
-      <div class="home-item">
-        <!-- 图标 -->
-        <div class="home-item-svg item">
-          <svg class="icon iconfont" aria-hidden="true">
-            <use xlink:href="#icon-fengjing"/>
-          </svg>
-        </div>
-
-        <!-- 文字 -->
-        <div class="home-item-text item">
-          <div class="text-div" @click="goPath(3)">新增景点</div>
-          <div class="number-div" @click="goPath(3)">{{home.detail}}</div>
-        </div>
-      </div>
-
-      <div class="home-item">
-        <!-- 图标 -->
-        <div class="home-item-svg item">
-          <svg class="icon iconfont" aria-hidden="true">
-            <use xlink:href="#icon-pinglun1"/>
-          </svg>
-        </div>
-
-        <!-- 文字 -->
-        <div class="home-item-text item">
-          <div class="text-div" @click="goPath(4)">新增评论</div>
-          <div class="number-div" @click="goPath(4)">{{home.comment}}</div>
         </div>
       </div>
 
     </div>
+
   </div>
 </template>
 
+
 <script>
-  import '../../assets/iconfont/iconfont'
-  import {getHomeCount} from '../../api/common'
+  import * as echart from 'echarts'
+  import {getEchartsSex, getEchartsUser} from '../../api/common'
 
   export default {
     name: 'Dashboard',
     data() {
       return {
-        home: {}
-
+        opinionData: []
       }
     },
-    created() {
-      this.init()
-
+    mounted() {
+      this.initEcharts()
     },
-    methods: {
 
-      // 初始化
-      init() {
-        getHomeCount().then(res => {
+    methods: {
+      async initEcharts() {
+        await getEchartsSex().then(res => {
           if (res.success) {
-            this.home = res.data.data
-          } else {
-            this.$message({message: '获取数据失败', type: 'error', duration: 1700})
+            console.log(res.data.data)
+            this.opinionData = []
+            this.opinionData = res.data.data
           }
+        })
+
+        let myChart = echart.init(document.getElementById('main1'))
+        // 绘制图表
+        myChart.setOption({
+          title: {
+            text: '用户性别统计',
+            left: 'center'
+          },
+          tooltip: {
+            trigger: 'item'
+          },
+          legend: {
+            orient: 'vertical',
+            left: 'left',
+          },
+          series: [
+            {
+              name: '性别',
+              type: 'pie',
+              radius: '50%',
+              data:this.opinionData,
+              emphasis: {
+                itemStyle: {
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+              }
+            }
+          ]
 
         })
 
-      },
+        await getEchartsUser().then(res => {
+          if (res.success) {
+            console.log(res.data.data)
+            this.opinionData = []
+            this.opinionData = res.data.data
+          }
+        })
 
-      goPath(id) {
-        switch (id) {
-          case 1:
-            this.$router.push({path: '/sys/user'})
-            break
-          case 2:
-            this.$router.push({path: '/sys/user'})
-            break
-          case 3:
-            this.$router.push({path: '/scenery/list'})
-            break
-          case 4:
-            this.$router.push({path: '/comment/commentList'})
-            break
-
-        }
+        let myChart1 = echart.init(document.getElementById('main2'))
+        // 绘制图表
+        myChart1.setOption({
+          title: {
+            text: '用户增长图',
+            left: 'center'
+          },
+          legend: {
+            data: ['2021年'],
+            left: 'left',
+          },
+          tooltip: {},
+          xAxis: {
+            type: 'category',
+            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月',
+              '8月']
+          },
+          yAxis: {
+            type: 'value',
+            boundaryGap: [0, 1]
+          },
+          series: [{
+            name: '2021年',
+            data: this.opinionData,
+            type: 'line'
+          }]
+        })
 
       }
-
     }
-
   }
 </script>
 
 <style scoped>
-  .home {
-    margin: 50px 50px;
-    display: flex;
-    justify-content: space-between;
+  .home-container {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
   }
 
-  .home-item {
-    width: 220px;
-    height: 108px;
-    background-color: #dcece5;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    border-radius: 4px;
-    display: flex;
-  }
-
-  .item {
-    width: 110px;
+  .home-container-item{
+    width: 100%;
     height: 100%;
     display: flex;
-
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
-  .home-item-text {
-    flex-direction: column;
-    /*justify-content: center;*/
+  .item-one{
+    width: 500px;
+    height: 500px;
+    margin-top: 30px;
   }
-
-  .text-div {
-    margin: 30px auto 5px;
-    font-size: 18px;
-    color: rgba(0, 0, 0, .45);
-    font-weight: 600;
-    cursor: pointer;
+  .item-two{
+    margin-top: 30px;
+    width: 500px;
+    height: 500px;
   }
-
-  .number-div {
-    margin: 5px auto;
-    font-weight: 700;
-    font-size: 20px;
-    color: #666;
-    cursor: pointer;
-  }
-
-
-  .icon {
-    width: 1em;
-    height: 1em;
-    vertical-align: -0.15em;
-    fill: currentColor;
-    overflow: hidden;
-    font-size: 68px;
-    margin: auto;
-  }
-
 
 </style>

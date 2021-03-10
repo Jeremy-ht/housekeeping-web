@@ -61,6 +61,44 @@ export function updUserInfo(params) {
   })
 }
 
+export function goYY(userid, infoid) {
+  return request({
+    url: baseURL + `/reservation/goYY/${userid}/${infoid}`,
+    method: 'get',
+  })
+}
+
+export function isYY(userid, infoid) {
+  return request({
+    url: baseURL + `/reservation/isYY/${userid}/${infoid}`,
+    method: 'get',
+  })
+}
+
+export function getYYinfo(userid) {
+  return request({
+    url: baseURL + `/reservation/getYYinfo/${userid}`,
+    method: 'get',
+  })
+}
+
+export function getReservationList(params) {
+  return request({
+    url: baseURL + `/reservation/getReservationList`,
+    method: 'get',
+    params
+  })
+}
+
+export function getTopList() {
+  return request({
+    url: baseURL + `/info/getTopList`,
+    method: 'get'
+  })
+}
+
+
+
 /**
  * category
  */
@@ -157,11 +195,10 @@ export function addScenery(params) {
   })
 }
 
-export function getSceneryList(params, categoryId, draft, creator) {
+export function getSceneryList(categoryId) {
   return request({
-    url: baseURL + `/detail/getSceneryList/${categoryId}/${draft}/${creator}`,
-    method: 'get',
-    params
+    url: baseURL + `/info/getInfoList/${categoryId}`,
+    method: 'get'
   })
 
 }
@@ -191,7 +228,7 @@ export function getSceneryIndex() {
 
 export function getSceneryInfo(id) {
   return request({
-    url: baseURL + `/detail/getSceneryInfo/${id}`,
+    url: baseURL + `/info/getInfoDeatilById/${id}`,
     method: 'get'
   })
 }
@@ -294,16 +331,29 @@ export function addUser(params) {
  * 统计
  */
 
-export function getEchartsCategory() {
+export function getEchartsYY() {
   return request({
-    url: baseURL + `/detail/getEchartsCategory`,
+    url: baseURL + `/info/getEchartsYY`,
     method: 'get'
   })
 }
 
+export function getEchartsInfo() {
+  return request({
+    url: baseURL + `/info/getEchartsInfo`,
+    method: 'get'
+  })
+}
 export function getEchartsUser() {
   return request({
-    url: baseURL + `/detail/getEchartsUser`,
+    url: baseURL + `/info/getEchartsUser`,
+    method: 'get'
+  })
+}
+
+export function getEchartsSex() {
+  return request({
+    url: baseURL + `/info/getEchartsSex`,
     method: 'get'
   })
 }
