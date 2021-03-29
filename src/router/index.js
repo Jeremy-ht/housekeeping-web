@@ -97,7 +97,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/admin',
     name: '系统管理',
-    meta: {title: '系统管理', icon: 'table'},
+    meta: {title: '系统管理', icon: 'el-icon-menu'},
     children: [
       {
         path: 'admin',
@@ -121,7 +121,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/housekeeping/detail',
     name: '家政管理',
-    meta: {title: '家政管理', icon: 'table'},
+    meta: {title: '家政管理', icon: 'el-icon-menu'},
     children: [
       {
         path: 'list',
@@ -151,13 +151,13 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/index/reservation',
     name: '预定管理',
-    meta: {title: '预定管理', icon: 'table'},
+    meta: {title: '预定管理', icon: 'el-icon-menu'},
     children: [
       {
         path: 'reservation',
         name: '预定列表',
         component: () => import('@/views/index/reservation'),
-        meta: {title: '预定列表', icon: 'table'}
+        meta: {title: '预定列表', icon: 'el-icon-menu'}
       },
          ]
   },
@@ -172,7 +172,7 @@ export const constantRoutes = [
         path: 'commentList',
         name: '评论列表',
         component: () => import('@/views/comment/commentList'),
-        meta: {title: '评论列表', icon: 'table'}
+        meta: {title: '评论列表', icon: 'el-icon-menu'}
       }
     ]
   },
@@ -184,7 +184,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/chart/chart',
     name: '数据统计',
-    meta: {title: '数据统计', icon: 'table'},
+    meta: {title: '数据统计', icon: 'el-icon-menu'},
     children: [
       {
         path: 'chart',

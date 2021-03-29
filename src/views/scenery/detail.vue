@@ -252,7 +252,7 @@
           return
         } else {
           this.adminInfo = admin
-          addDetailInfo.creator = admin.id
+          this.addInfo.creator = admin.id
         }
 
         // 获取分类

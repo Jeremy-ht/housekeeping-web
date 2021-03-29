@@ -260,6 +260,7 @@
       // 初始化
       async init() {
         this.detailId = this.$route.params.id
+        console.log(this.$route.params.id)
         // 获取详情
         await getSceneryInfo(this.detailId).then(res => {
           if (res.success) {
@@ -275,14 +276,15 @@
         })
 
         let user = JSON.parse(window.localStorage.getItem('UserInfoHousekeeping'))
-
-        // 查看是否预约
-        await isYY(user.id, this.detailId ).then(res => {
-          if (res.success) {
-            if (res.data.data)
-              this.isYUYUE = true
-          }
-        })
+        if(user !=null || user != undefined){
+          this.userid = user.id
+          await isYY(user.id, this.detailId ).then(res => {
+            if (res.success) {
+              if (res.data.data)
+                this.isYUYUE = true
+            }
+          })
+        }
 
         // 评论
         await getCommentList(1, 100, this.detailId).then(res => {
@@ -297,7 +299,7 @@
       },
 
       goYY(id) {
-        console.log(id)
+
         if (this.isLogin()) {
 
           this.$confirm('是否确定预约?', '提示', {
